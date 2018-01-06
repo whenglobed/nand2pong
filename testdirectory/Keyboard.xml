@@ -1,0 +1,567 @@
+<class>
+  <keyword> class </keyword>
+  <identifier> Keyboard </identifier>
+    NAME: Keyboard, TYPE: none, KIND: none, INDEX: NA
+  <symbol> { </symbol>
+  <classVarDec>
+    <keyword> static </keyword>
+    <keyword> int </keyword>
+    <identifier> keyboardMemoryMap </identifier>
+      NAME: keyboardMemoryMap, TYPE: int, KIND: static, STATICINDEX: 0
+    <symbol> ; </symbol>
+  </classVarDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> init </identifier>
+      NAME: init, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> keyboardMemoryMap </identifier>
+            NAME: keyboardMemoryMap, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 24576 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> char </keyword>
+    <identifier> keyPressed </identifier>
+      NAME: keyPressed, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <identifier> Memory </identifier>
+                NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> peek </identifier>
+                NAME: peek, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> keyboardMemoryMap </identifier>
+                      NAME: keyboardMemoryMap, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> char </keyword>
+    <identifier> readChar </identifier>
+      NAME: readChar, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> char </keyword>
+        <identifier> c </identifier>
+          NAME: c, TYPE: char, KIND: var, VARINDEX: 0
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> c </identifier>
+            NAME: c, TYPE: char, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> c </identifier>
+                NAME: c, TYPE: char, KIND: none, INDEX: NA
+            </term>
+            <symbol> = </symbol>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> c </identifier>
+                NAME: c, TYPE: char, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> Keyboard </identifier>
+                    NAME: Keyboard, TYPE: char, KIND: none, INDEX: NA
+                  <symbol> . </symbol>
+                  <identifier> keyPressed </identifier>
+                    NAME: keyPressed, TYPE: char, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <symbol> ( </symbol>
+                <expression>
+                  <term>
+                    <identifier> Keyboard </identifier>
+                      NAME: Keyboard, TYPE: char, KIND: none, INDEX: NA
+                    <symbol> . </symbol>
+                    <identifier> keyPressed </identifier>
+                      NAME: keyPressed, TYPE: char, KIND: none, INDEX: NA
+                    <symbol> ( </symbol>
+                    <expressionList>
+                    </expressionList>
+                    <symbol> ) </symbol>
+                  </term>
+                  <symbol> = </symbol>
+                  <term>
+                    <integerConstant> 0 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> ) </symbol>
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Output </identifier>
+            NAME: Output, TYPE: char, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> printChar </identifier>
+            NAME: printChar, TYPE: char, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <identifier> c </identifier>
+                  NAME: c, TYPE: char, KIND: none, INDEX: NA
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <identifier> c </identifier>
+                NAME: c, TYPE: char, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <identifier> String </identifier>
+      NAME: String, TYPE: char, KIND: none, INDEX: NA
+    <identifier> readLine </identifier>
+      NAME: readLine, TYPE: char, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <identifier> String </identifier>
+        NAME: String, TYPE: String, KIND: argument, ARGINDEX: 0
+      <identifier> message </identifier>
+        NAME: message, TYPE: String, KIND: argument, ARGINDEX: 0
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> char </keyword>
+        <identifier> c </identifier>
+          NAME: c, TYPE: char, KIND: var, VARINDEX: 0
+        <symbol> ; </symbol>
+      </varDec>
+      <varDec>
+        <keyword> var </keyword>
+        <identifier> String </identifier>
+          NAME: String, TYPE: String, KIND: var, VARINDEX: 1
+        <identifier> s </identifier>
+          NAME: s, TYPE: String, KIND: var, VARINDEX: 1
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> c </identifier>
+            NAME: c, TYPE: String, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> s </identifier>
+            NAME: s, TYPE: String, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> String </identifier>
+                NAME: String, TYPE: String, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> new </identifier>
+                NAME: new, TYPE: String, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 64 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Output </identifier>
+            NAME: Output, TYPE: String, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> printString </identifier>
+            NAME: printString, TYPE: String, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <identifier> message </identifier>
+                  NAME: message, TYPE: String, KIND: none, INDEX: NA
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <symbol> ( </symbol>
+                <expression>
+                  <term>
+                    <identifier> c </identifier>
+                      NAME: c, TYPE: String, KIND: none, INDEX: NA
+                  </term>
+                  <symbol> = </symbol>
+                  <term>
+                    <integerConstant> 128 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> ) </symbol>
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> c </identifier>
+                NAME: c, TYPE: String, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> Keyboard </identifier>
+                    NAME: Keyboard, TYPE: String, KIND: none, INDEX: NA
+                  <symbol> . </symbol>
+                  <identifier> readChar </identifier>
+                    NAME: readChar, TYPE: String, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> c </identifier>
+                    NAME: c, TYPE: String, KIND: none, INDEX: NA
+                </term>
+                <symbol> = </symbol>
+                <term>
+                  <integerConstant> 129 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <ifStatement>
+                  <keyword> if </keyword>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> s </identifier>
+                        NAME: s, TYPE: String, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> length </identifier>
+                        NAME: length, TYPE: String, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                    </term>
+                    <symbol> &gt; </symbol>
+                    <term>
+                      <integerConstant> 0 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                  <symbol> { </symbol>
+                  <statements>
+                    <doStatement>
+                      <keyword> do </keyword>
+                      <identifier> s </identifier>
+                        NAME: s, TYPE: String, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> eraseLastChar </identifier>
+                        NAME: eraseLastChar, TYPE: String, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                      <symbol> ; </symbol>
+                    </doStatement>
+                    <doStatement>
+                      <keyword> do </keyword>
+                      <identifier> Output </identifier>
+                        NAME: Output, TYPE: String, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> backSpace </identifier>
+                        NAME: backSpace, TYPE: String, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                      <symbol> ; </symbol>
+                    </doStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                </ifStatement>
+              </statements>
+              <symbol> } </symbol>
+              <keyword> else </keyword>
+              <symbol> { </symbol>
+              <statements>
+                <ifStatement>
+                  <keyword> if </keyword>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ~ </symbol>
+                      <term>
+                        <symbol> ( </symbol>
+                        <expression>
+                          <term>
+                            <identifier> c </identifier>
+                              NAME: c, TYPE: String, KIND: none, INDEX: NA
+                          </term>
+                          <symbol> = </symbol>
+                          <term>
+                            <integerConstant> 128 </integerConstant>
+                          </term>
+                        </expression>
+                        <symbol> ) </symbol>
+                      </term>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                  <symbol> { </symbol>
+                  <statements>
+                    <doStatement>
+                      <keyword> do </keyword>
+                      <identifier> s </identifier>
+                        NAME: s, TYPE: String, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> appendChar </identifier>
+                        NAME: appendChar, TYPE: String, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                        <expression>
+                          <term>
+                            <identifier> c </identifier>
+                              NAME: c, TYPE: String, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                      <symbol> ; </symbol>
+                    </doStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                </ifStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <identifier> s </identifier>
+                NAME: s, TYPE: String, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> int </keyword>
+    <identifier> readInt </identifier>
+      NAME: readInt, TYPE: String, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <identifier> String </identifier>
+        NAME: String, TYPE: String, KIND: argument, ARGINDEX: 0
+      <identifier> message </identifier>
+        NAME: message, TYPE: String, KIND: argument, ARGINDEX: 0
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <identifier> String </identifier>
+          NAME: String, TYPE: String, KIND: var, VARINDEX: 0
+        <identifier> s </identifier>
+          NAME: s, TYPE: String, KIND: var, VARINDEX: 0
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> s </identifier>
+            NAME: s, TYPE: String, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> Keyboard </identifier>
+                NAME: Keyboard, TYPE: String, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> readLine </identifier>
+                NAME: readLine, TYPE: String, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> message </identifier>
+                      NAME: message, TYPE: String, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <identifier> s </identifier>
+                NAME: s, TYPE: String, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> intValue </identifier>
+                NAME: intValue, TYPE: String, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <symbol> } </symbol>
+</class>

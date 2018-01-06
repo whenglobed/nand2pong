@@ -1,0 +1,1511 @@
+<class>
+  <keyword> class </keyword>
+  <identifier> Memory </identifier>
+    NAME: Memory, TYPE: none, KIND: none, INDEX: NA
+  <symbol> { </symbol>
+  <classVarDec>
+    <keyword> static </keyword>
+    <keyword> int </keyword>
+    <identifier> heapBase </identifier>
+      NAME: heapBase, TYPE: int, KIND: static, STATICINDEX: 0
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> static </keyword>
+    <keyword> int </keyword>
+    <identifier> heapLength </identifier>
+      NAME: heapLength, TYPE: int, KIND: static, STATICINDEX: 1
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> static </keyword>
+    <keyword> int </keyword>
+    <identifier> freeList </identifier>
+      NAME: freeList, TYPE: int, KIND: static, STATICINDEX: 2
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> static </keyword>
+    <identifier> Array </identifier>
+      NAME: Array, TYPE: Array, KIND: static, STATICINDEX: 3
+    <identifier> memory </identifier>
+      NAME: memory, TYPE: Array, KIND: static, STATICINDEX: 3
+    <symbol> ; </symbol>
+  </classVarDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> init </identifier>
+      NAME: init, TYPE: Array, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> heapBase </identifier>
+            NAME: heapBase, TYPE: Array, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 2048 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> heapLength </identifier>
+            NAME: heapLength, TYPE: Array, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 14336 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> memory </identifier>
+            NAME: memory, TYPE: Array, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> freeList </identifier>
+            NAME: freeList, TYPE: Array, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> heapBase </identifier>
+                NAME: heapBase, TYPE: Array, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> memory </identifier>
+            NAME: memory, TYPE: Array, KIND: none, INDEX: NA
+          <symbol> [ </symbol>
+          <expression>
+            <term>
+              <identifier> freeList </identifier>
+                NAME: freeList, TYPE: Array, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ] </symbol>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> heapLength </identifier>
+                NAME: heapLength, TYPE: Array, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> memory </identifier>
+            NAME: memory, TYPE: Array, KIND: none, INDEX: NA
+          <symbol> [ </symbol>
+          <expression>
+            <term>
+              <identifier> freeList </identifier>
+                NAME: freeList, TYPE: Array, KIND: none, INDEX: NA
+            </term>
+            <symbol> + </symbol>
+            <term>
+              <integerConstant> 1 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ] </symbol>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <keyword> null </keyword>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> int </keyword>
+    <identifier> peek </identifier>
+      NAME: peek, TYPE: Array, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> address </identifier>
+        NAME: address, TYPE: int, KIND: argument, ARGINDEX: 0
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <identifier> memory </identifier>
+                NAME: memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> [ </symbol>
+              <expression>
+                <term>
+                  <identifier> address </identifier>
+                    NAME: address, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ] </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> poke </identifier>
+      NAME: poke, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> address </identifier>
+        NAME: address, TYPE: int, KIND: argument, ARGINDEX: 0
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> value </identifier>
+        NAME: value, TYPE: int, KIND: argument, ARGINDEX: 1
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> memory </identifier>
+            NAME: memory, TYPE: int, KIND: none, INDEX: NA
+          <symbol> [ </symbol>
+          <expression>
+            <term>
+              <identifier> address </identifier>
+                NAME: address, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ] </symbol>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> value </identifier>
+                NAME: value, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> int </keyword>
+    <identifier> alloc </identifier>
+      NAME: alloc, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> size </identifier>
+        NAME: size, TYPE: int, KIND: argument, ARGINDEX: 0
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> tempNode </identifier>
+          NAME: tempNode, TYPE: int, KIND: var, VARINDEX: 0
+        <symbol> ; </symbol>
+      </varDec>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> newLength </identifier>
+          NAME: newLength, TYPE: int, KIND: var, VARINDEX: 1
+        <symbol> ; </symbol>
+      </varDec>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> blockAddress </identifier>
+          NAME: blockAddress, TYPE: int, KIND: var, VARINDEX: 2
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> size </identifier>
+                NAME: size, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> &lt; </symbol>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Sys </identifier>
+                NAME: Sys, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> error </identifier>
+                NAME: error, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 5 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> tempNode </identifier>
+            NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> freeList </identifier>
+                NAME: freeList, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <symbol> ( </symbol>
+                <expression>
+                  <term>
+                    <identifier> tempNode </identifier>
+                      NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                  <symbol> = </symbol>
+                  <term>
+                    <integerConstant> 0 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> ) </symbol>
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> memory </identifier>
+                    NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <identifier> tempNode </identifier>
+                        NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> size </identifier>
+                    NAME: size, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier> newLength </identifier>
+                    NAME: newLength, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <identifier> memory </identifier>
+                        NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> [ </symbol>
+                      <expression>
+                        <term>
+                          <identifier> tempNode </identifier>
+                            NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                      </expression>
+                      <symbol> ] </symbol>
+                    </term>
+                    <symbol> - </symbol>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> size </identifier>
+                            NAME: size, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> + </symbol>
+                        <term>
+                          <integerConstant> 1 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+                <ifStatement>
+                  <keyword> if </keyword>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> newLength </identifier>
+                        NAME: newLength, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> &lt; </symbol>
+                    <term>
+                      <integerConstant> 4 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                  <symbol> { </symbol>
+                  <statements>
+                    <doStatement>
+                      <keyword> do </keyword>
+                      <identifier> Memory </identifier>
+                        NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> removeNode </identifier>
+                        NAME: removeNode, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                        <expression>
+                          <term>
+                            <identifier> tempNode </identifier>
+                              NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                      <symbol> ; </symbol>
+                    </doStatement>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier> memory </identifier>
+                        NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> [ </symbol>
+                      <expression>
+                        <term>
+                          <identifier> tempNode </identifier>
+                            NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> + </symbol>
+                        <term>
+                          <integerConstant> 1 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ] </symbol>
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <keyword> null </keyword>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                    <returnStatement>
+                      <keyword> return </keyword>
+                      <expression>
+                        <term>
+                          <identifier> tempNode </identifier>
+                            NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </returnStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                  <keyword> else </keyword>
+                  <symbol> { </symbol>
+                  <statements>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier> blockAddress </identifier>
+                        NAME: blockAddress, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <identifier> tempNode </identifier>
+                            NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> + </symbol>
+                        <term>
+                          <identifier> newLength </identifier>
+                            NAME: newLength, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> + </symbol>
+                        <term>
+                          <integerConstant> 1 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier> memory </identifier>
+                        NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> [ </symbol>
+                      <expression>
+                        <term>
+                          <identifier> tempNode </identifier>
+                            NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                      </expression>
+                      <symbol> ] </symbol>
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <identifier> newLength </identifier>
+                            NAME: newLength, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier> memory </identifier>
+                        NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> [ </symbol>
+                      <expression>
+                        <term>
+                          <identifier> blockAddress </identifier>
+                            NAME: blockAddress, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> - </symbol>
+                        <term>
+                          <integerConstant> 1 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ] </symbol>
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <identifier> size </identifier>
+                            NAME: size, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> + </symbol>
+                        <term>
+                          <integerConstant> 1 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                    <returnStatement>
+                      <keyword> return </keyword>
+                      <expression>
+                        <term>
+                          <identifier> blockAddress </identifier>
+                            NAME: blockAddress, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </returnStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                </ifStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> tempNode </identifier>
+                NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> memory </identifier>
+                    NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <identifier> tempNode </identifier>
+                        NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <integerConstant> 1 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <keyword> null </keyword>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> deAlloc </identifier>
+      NAME: deAlloc, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> object </identifier>
+        NAME: object, TYPE: int, KIND: argument, ARGINDEX: 0
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> object </identifier>
+                NAME: object, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> = </symbol>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Output </identifier>
+                NAME: Output, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> printString </identifier>
+                NAME: printString, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <stringConstant> Error: cannot deallocate null object. </stringConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+          <keyword> else </keyword>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Memory </identifier>
+                NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> appendNode </identifier>
+                NAME: appendNode, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> object </identifier>
+                      NAME: object, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                  <symbol> - </symbol>
+                  <term>
+                    <integerConstant> 1 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Memory </identifier>
+                NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> defragSingleBlock </identifier>
+                NAME: defragSingleBlock, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> object </identifier>
+                      NAME: object, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                  <symbol> - </symbol>
+                  <term>
+                    <integerConstant> 1 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> defragSingleBlock </identifier>
+      NAME: defragSingleBlock, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> targetAddress </identifier>
+        NAME: targetAddress, TYPE: int, KIND: argument, ARGINDEX: 0
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> tempNode </identifier>
+          NAME: tempNode, TYPE: int, KIND: var, VARINDEX: 0
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> tempNode </identifier>
+            NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> freeList </identifier>
+                NAME: freeList, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <symbol> ( </symbol>
+                <expression>
+                  <term>
+                    <identifier> tempNode </identifier>
+                      NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                  <symbol> = </symbol>
+                  <term>
+                    <integerConstant> 0 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> ) </symbol>
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> tempNode </identifier>
+                    NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <identifier> memory </identifier>
+                    NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <identifier> tempNode </identifier>
+                        NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+                <symbol> = </symbol>
+                <term>
+                  <identifier> targetAddress </identifier>
+                    NAME: targetAddress, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier> memory </identifier>
+                    NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <identifier> tempNode </identifier>
+                        NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <identifier> memory </identifier>
+                        NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> [ </symbol>
+                      <expression>
+                        <term>
+                          <identifier> tempNode </identifier>
+                            NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                      </expression>
+                      <symbol> ] </symbol>
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <identifier> memory </identifier>
+                        NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> [ </symbol>
+                      <expression>
+                        <term>
+                          <identifier> targetAddress </identifier>
+                            NAME: targetAddress, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                      </expression>
+                      <symbol> ] </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+                <doStatement>
+                  <keyword> do </keyword>
+                  <identifier> Memory </identifier>
+                    NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> . </symbol>
+                  <identifier> removeNode </identifier>
+                    NAME: removeNode, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                    <expression>
+                      <term>
+                        <identifier> targetAddress </identifier>
+                          NAME: targetAddress, TYPE: int, KIND: none, INDEX: NA
+                      </term>
+                    </expression>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                  <symbol> ; </symbol>
+                </doStatement>
+                <returnStatement>
+                  <keyword> return </keyword>
+                  <symbol> ; </symbol>
+                </returnStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> tempNode </identifier>
+                NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> memory </identifier>
+                    NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <identifier> tempNode </identifier>
+                        NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <integerConstant> 1 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> defragRecursive </identifier>
+      NAME: defragRecursive, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> nodeAddress </identifier>
+        NAME: nodeAddress, TYPE: int, KIND: argument, ARGINDEX: 0
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <symbol> ( </symbol>
+                <expression>
+                  <term>
+                    <identifier> memory </identifier>
+                      NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                    <symbol> [ </symbol>
+                    <expression>
+                      <term>
+                        <identifier> nodeAddress </identifier>
+                          NAME: nodeAddress, TYPE: int, KIND: none, INDEX: NA
+                      </term>
+                      <symbol> + </symbol>
+                      <term>
+                        <integerConstant> 1 </integerConstant>
+                      </term>
+                    </expression>
+                    <symbol> ] </symbol>
+                  </term>
+                  <symbol> = </symbol>
+                  <term>
+                    <integerConstant> 0 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> ) </symbol>
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Memory </identifier>
+                NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> defragRecursive </identifier>
+                NAME: defragRecursive, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> memory </identifier>
+                      NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                    <symbol> [ </symbol>
+                    <expression>
+                      <term>
+                        <identifier> nodeAddress </identifier>
+                          NAME: nodeAddress, TYPE: int, KIND: none, INDEX: NA
+                      </term>
+                      <symbol> + </symbol>
+                      <term>
+                        <integerConstant> 1 </integerConstant>
+                      </term>
+                    </expression>
+                    <symbol> ] </symbol>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+          <keyword> else </keyword>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Memory </identifier>
+                NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> defragSingleBlock </identifier>
+                NAME: defragSingleBlock, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> nodeAddress </identifier>
+                      NAME: nodeAddress, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> defragAll </identifier>
+      NAME: defragAll, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> i </identifier>
+          NAME: i, TYPE: int, KIND: var, VARINDEX: 0
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> i </identifier>
+            NAME: i, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> i </identifier>
+                NAME: i, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> &lt; </symbol>
+            <term>
+              <integerConstant> 10 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Memory </identifier>
+                NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> defragRecursive </identifier>
+                NAME: defragRecursive, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> freeList </identifier>
+                      NAME: freeList, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> i </identifier>
+                NAME: i, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> i </identifier>
+                    NAME: i, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> appendNode </identifier>
+      NAME: appendNode, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> nodeAddress </identifier>
+        NAME: nodeAddress, TYPE: int, KIND: argument, ARGINDEX: 0
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> tempNode </identifier>
+          NAME: tempNode, TYPE: int, KIND: var, VARINDEX: 0
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> tempNode </identifier>
+            NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> freeList </identifier>
+                NAME: freeList, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <symbol> ( </symbol>
+                <expression>
+                  <term>
+                    <identifier> memory </identifier>
+                      NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                    <symbol> [ </symbol>
+                    <expression>
+                      <term>
+                        <identifier> tempNode </identifier>
+                          NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                      </term>
+                      <symbol> + </symbol>
+                      <term>
+                        <integerConstant> 1 </integerConstant>
+                      </term>
+                    </expression>
+                    <symbol> ] </symbol>
+                  </term>
+                  <symbol> = </symbol>
+                  <term>
+                    <keyword> null </keyword>
+                  </term>
+                </expression>
+                <symbol> ) </symbol>
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> tempNode </identifier>
+                NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> memory </identifier>
+                    NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <identifier> tempNode </identifier>
+                        NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <integerConstant> 1 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> memory </identifier>
+            NAME: memory, TYPE: int, KIND: none, INDEX: NA
+          <symbol> [ </symbol>
+          <expression>
+            <term>
+              <identifier> tempNode </identifier>
+                NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> + </symbol>
+            <term>
+              <integerConstant> 1 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ] </symbol>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> nodeAddress </identifier>
+                NAME: nodeAddress, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> memory </identifier>
+            NAME: memory, TYPE: int, KIND: none, INDEX: NA
+          <symbol> [ </symbol>
+          <expression>
+            <term>
+              <identifier> nodeAddress </identifier>
+                NAME: nodeAddress, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> + </symbol>
+            <term>
+              <integerConstant> 1 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ] </symbol>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <keyword> null </keyword>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> removeNode </identifier>
+      NAME: removeNode, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> nodeAddress </identifier>
+        NAME: nodeAddress, TYPE: int, KIND: argument, ARGINDEX: 0
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> nextPointer </identifier>
+          NAME: nextPointer, TYPE: int, KIND: var, VARINDEX: 0
+        <symbol> ; </symbol>
+      </varDec>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> tempNode </identifier>
+          NAME: tempNode, TYPE: int, KIND: var, VARINDEX: 1
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> nodeAddress </identifier>
+                NAME: nodeAddress, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> = </symbol>
+            <term>
+              <identifier> freeList </identifier>
+                NAME: freeList, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Sys </identifier>
+                NAME: Sys, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> error </identifier>
+                NAME: error, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 6 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> nextPointer </identifier>
+            NAME: nextPointer, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> memory </identifier>
+                NAME: memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> [ </symbol>
+              <expression>
+                <term>
+                  <identifier> nodeAddress </identifier>
+                    NAME: nodeAddress, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ] </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> tempNode </identifier>
+            NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> freeList </identifier>
+                NAME: freeList, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <symbol> ( </symbol>
+                <expression>
+                  <term>
+                    <identifier> tempNode </identifier>
+                      NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                  <symbol> = </symbol>
+                  <term>
+                    <integerConstant> 0 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> ) </symbol>
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> memory </identifier>
+                    NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <identifier> tempNode </identifier>
+                        NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <integerConstant> 1 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+                <symbol> = </symbol>
+                <term>
+                  <identifier> nodeAddress </identifier>
+                    NAME: nodeAddress, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier> memory </identifier>
+                    NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <identifier> tempNode </identifier>
+                        NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <integerConstant> 1 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <identifier> nextPointer </identifier>
+                        NAME: nextPointer, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+                <returnStatement>
+                  <keyword> return </keyword>
+                  <symbol> ; </symbol>
+                </returnStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> tempNode </identifier>
+                NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> memory </identifier>
+                    NAME: memory, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> [ </symbol>
+                  <expression>
+                    <term>
+                      <identifier> tempNode </identifier>
+                        NAME: tempNode, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <integerConstant> 1 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ] </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <symbol> } </symbol>
+</class>

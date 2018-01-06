@@ -1,0 +1,274 @@
+// This file is part of the materials accompanying the book 
+// "The Elements of Computing Systems" by Nisan and Schocken, 
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/12/Screen.jack
+
+/**
+ * Graphic screen library.
+ */
+class Screen {
+
+    static boolean color; // true = black, false = white
+    static int maxRows;
+    static int maxCols;
+    static int screenMapStartAddress; // the start of the screen's memory map
+    static int screenMapStopAddress; // first memory word AFTER the last valid screen map address
+
+    /** Initializes the Screen. */
+    function void init() {
+        let color = true;
+        let maxRows = 255;
+        let maxCols = 511;
+        let screenMapStartAddress = 16384;
+        let screenMapStopAddress = 24576;
+        return;
+    }
+
+    /** Erases the whole screen.
+     *  Iterates through all memory words in the screen map
+     *  and sets them all to 0. */
+    
+    function void clearScreen() {        
+        var int i;
+        let i = screenMapStartAddress;
+        while (i < screenMapStopAddress) {
+            do Memory.poke(i, 0);
+            let i = i + 1;
+        }
+        return;
+    }
+
+    /** Sets the color to be used in further draw commands
+     *  where white = false, black = true. */
+    function void setColor(boolean b) {
+        let color = b;
+        return;
+    }
+
+    /** Draws the (x, y) pixel. */
+    function void drawPixel(int x, int y) {        
+        var int targetAddress;        
+        var int mask;
+        var int i;
+        var int targetBit;
+        
+        if ((x < 0) | (x > maxCols) | (y < 0) | (y > maxRows)) {
+            do Sys.error(7);
+        }
+        
+        let targetAddress = screenMapStartAddress + Math.multiply(y, 32) + Math.divide(x, 16);
+        let mask = 1;
+        let i = 0;
+        let targetBit = Math.remainder(x, 16);
+        
+        while (~(i = targetBit)) {
+            let mask = mask + mask;
+            let i = i + 1;
+        }
+        
+        if (color) {
+            do Memory.poke(targetAddress, (Memory.peek(targetAddress) | mask));
+        }
+        else {
+            // flip the bits
+            let mask = -mask;
+            let mask = mask - 1;            
+            do Memory.poke(targetAddress, (Memory.peek(targetAddress) & mask));
+        }
+        
+        return;
+    }
+
+    /** Draws a line from pixel (x1, y1) to (x2, y2). */
+    function void drawLine(int x1, int y1, int x2, int y2) {
+        var int xDifference, yDifference;
+        var int a, b;
+        var int a_yD_Minus_b_xD;        
+        var boolean isStraight;
+        
+        if ((x1 < 0) | (x1 > maxCols) | (y1 < 0) | (y1 > maxRows) | (x2 < 0)
+                               | (x2 > maxCols) | (y2 < 0) | (y2 > maxRows)) {
+            do Sys.error(8);
+        }        
+        
+        let xDifference = x2 - x1;
+        let yDifference = y2 - y1;
+        let a = 0;
+        let b = 0;
+        let a_yD_Minus_b_xD = 0;
+        let isStraight = false;
+        
+        
+        if (xDifference = 0) {
+            let isStraight = true;
+            do Screen.drawVertical(y1, y2, x1);            
+        }        
+        if (yDifference = 0) {
+            let isStraight = true;
+            do Screen.drawHorizontal(x1, x2, y1);            
+        }
+        
+        if (~(isStraight)) {
+            if ((xDifference > 0) & (yDifference > 0)) {            
+                while ((a < (xDifference + 1)) & (b < (yDifference + 1))) {
+                    do Screen.drawPixel(x1 + a, y1 + b);
+                    if (a_yD_Minus_b_xD < 0) {
+                        let a = a + 1;
+                        let a_yD_Minus_b_xD = a_yD_Minus_b_xD + yDifference;
+                    }
+                    else {
+                        let b = b + 1;
+                        let a_yD_Minus_b_xD = a_yD_Minus_b_xD - xDifference;
+                    }
+                }
+            }
+            if ((xDifference > 0) & (yDifference < 0)) {            
+                while ((a < (xDifference + 1)) & (b > (yDifference - 1))) {
+                    do Screen.drawPixel(x1 + a, y1 + b);
+                    if (a_yD_Minus_b_xD < 0) {
+                        let a = a + 1;
+                        let a_yD_Minus_b_xD = a_yD_Minus_b_xD - yDifference;
+                    }
+                    else {
+                        let b = b - 1;
+                        let a_yD_Minus_b_xD = a_yD_Minus_b_xD - xDifference;
+                    }
+                }
+            }
+            if ((xDifference < 0) & (yDifference > 0)) {            
+                while ((a > (xDifference - 1)) & (b < (yDifference + 1))) {
+                    do Screen.drawPixel(x1 + a, y1 + b);
+                    if (a_yD_Minus_b_xD < 0) {
+                        let a = a - 1;
+                        let a_yD_Minus_b_xD = a_yD_Minus_b_xD + yDifference;
+                    }
+                    else {
+                        let b = b + 1;
+                        let a_yD_Minus_b_xD = a_yD_Minus_b_xD + xDifference;
+                    }
+                }
+            }
+            if ((xDifference < 0) & (yDifference < 0)) {            
+                while ((a > (xDifference - 1)) & (b > (yDifference - 1))) {
+                    do Screen.drawPixel(x1 + a, y1 + b);
+                    if (a_yD_Minus_b_xD < 0) {
+                        let a = a - 1;
+                        let a_yD_Minus_b_xD = a_yD_Minus_b_xD - yDifference;
+                    }
+                    else {
+                        let b = b - 1;
+                        let a_yD_Minus_b_xD = a_yD_Minus_b_xD + xDifference;
+                    }
+                }
+            }
+        }
+        
+        return;
+    }
+
+    /** Draws a filled rectangle where the top left corner
+     *  is (x1, y1) and the bottom right corner is (x2, y2). */
+    function void drawRectangle(int x1, int y1, int x2, int y2) {
+        if ((x2 < x1) | (y2 < y2)) {
+            do Sys.error(9);
+        }
+        while (y1 < (y2 + 1)) {
+            do Screen.drawHorizontal(x1, x2, y1);
+            let y1 = y1 + 1;
+        }
+        return;
+    }
+
+    /** Draws a filled circle of radius r around (cx, cy). */
+    function void drawCircle(int cx, int cy, int r) {                
+        var int leftX, rightX;        
+        var int dy;
+
+        let dy = -r;
+        
+        if ((cx < 0) | (cx > maxCols) | (cy < 0) | (cy > maxRows)) {
+            do Sys.error(12);
+        }
+        
+        if (((cx + r) > maxCols) | ((cx - r) < 0) | ((cy + r) > maxRows) | ((cy - r) < 0)) {
+            do Sys.error(13);
+        }
+        
+        if (r > 181) {
+            do Sys.error(13);
+        }
+        
+        while (dy < (r + 1)) {
+            let leftX = cx - Math.sqrt(Math.multiply(r, r) - Math.multiply(dy, dy));
+            let rightX = cx + Math.sqrt(Math.multiply(r, r) - Math.multiply(dy, dy));
+            do Screen.drawHorizontal(leftX, rightX, cy + dy);
+            let dy = dy + 1;
+        }
+        
+        return;
+    }
+    
+    /** Draws a horizontal line from x1 to x2 on row y.
+     *  If the x coordinates are equal, one pixel is drawn. */
+    function void drawHorizontal(int x1, int x2, int y) {
+        if ((x1 < 0) | (x1 > maxCols) | (x2 < 0) | (x2 > maxCols) | (y < 0) | (y > maxRows)) {
+            do Sys.error(8);
+        }
+        if (x2 < x1) {
+            do Screen.drawHorizontal(x2, x1, y);
+        }
+        else {        
+            while (x1 < (x2 + 1)) {
+                if ((Math.remainder(x1, 16) = 0) & (x2 - x1 > 16)) {
+                    while (x2 - x1 > 16) {
+                        do Screen.fillScreenMapWord(x1, y);
+                        let x1 = x1 + 16;
+                    }
+                }
+                else {
+                    do Screen.drawPixel(x1, y);
+                    let x1 = x1 + 1;
+                }                
+            }
+        }
+        return;
+    }
+    
+    /** Draws a vertical line from y1 to y2 in column x.
+     *  If the y coordinates are equal, one pixel is drawn. */
+    function void drawVertical(int y1, int y2, int x) {
+        if ((y1 < 0) | (y1 > maxRows) | (y2 < 0) | (y2 > maxRows) | (x < 0) | (x > maxCols)) {
+            do Sys.error(8);
+        }
+        if (y2 < y1) {
+            do Screen.drawVertical(y2, y1, x);
+        }
+        else {
+            while (y1 < (y2 + 1)) {
+                do Screen.drawPixel(x, y1);
+                let y1 = y1 + 1;
+            }
+        }
+        return;
+    }
+    
+    /** Fills an entire memory word in the screen map with 1s or 0s,
+     *  effectively drawing a 16-pixel horizontal line all at once. Used
+     *  to make drawHorizontal() more efficient. This should only be called
+     *  when x%16 is 0, or it won't be word-aligned and will draw over other
+     *  pixels incorrectly. */
+    function void fillScreenMapWord(int x, int y) {
+        var int targetAddress;        
+        
+        let targetAddress = screenMapStartAddress + Math.multiply(y, 32) + Math.divide(x, 16);
+        
+        if (color) {
+            do Memory.poke(targetAddress, -1);
+        }
+        else {
+            do Memory.poke(targetAddress, 0);
+        }
+        
+        return;
+    }
+}

@@ -1,0 +1,1385 @@
+<class>
+  <keyword> class </keyword>
+  <identifier> PongGame </identifier>
+    NAME: PongGame, TYPE: none, KIND: none, INDEX: NA
+  <symbol> { </symbol>
+  <classVarDec>
+    <keyword> static </keyword>
+    <identifier> PongGame </identifier>
+      NAME: PongGame, TYPE: PongGame, KIND: static, STATICINDEX: 0
+    <identifier> instance </identifier>
+      NAME: instance, TYPE: PongGame, KIND: static, STATICINDEX: 0
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <identifier> Bat </identifier>
+      NAME: Bat, TYPE: Bat, KIND: field, FIELDINDEX: 0
+    <identifier> bat </identifier>
+      NAME: bat, TYPE: Bat, KIND: field, FIELDINDEX: 0
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <identifier> Ball </identifier>
+      NAME: Ball, TYPE: Ball, KIND: field, FIELDINDEX: 1
+    <identifier> ball </identifier>
+      NAME: ball, TYPE: Ball, KIND: field, FIELDINDEX: 1
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> int </keyword>
+    <identifier> wall </identifier>
+      NAME: wall, TYPE: int, KIND: field, FIELDINDEX: 2
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> boolean </keyword>
+    <identifier> exit </identifier>
+      NAME: exit, TYPE: boolean, KIND: field, FIELDINDEX: 3
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> int </keyword>
+    <identifier> score </identifier>
+      NAME: score, TYPE: int, KIND: field, FIELDINDEX: 4
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> int </keyword>
+    <identifier> lastWall </identifier>
+      NAME: lastWall, TYPE: int, KIND: field, FIELDINDEX: 5
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> int </keyword>
+    <identifier> batWidth </identifier>
+      NAME: batWidth, TYPE: int, KIND: field, FIELDINDEX: 6
+    <symbol> ; </symbol>
+  </classVarDec>
+  <subroutineDec>
+    <keyword> constructor </keyword>
+    <identifier> PongGame </identifier>
+      NAME: PongGame, TYPE: int, KIND: none, INDEX: NA
+    <identifier> new </identifier>
+      NAME: new, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Screen </identifier>
+            NAME: Screen, TYPE: int, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> clearScreen </identifier>
+            NAME: clearScreen, TYPE: int, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> batWidth </identifier>
+            NAME: batWidth, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 50 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> bat </identifier>
+            NAME: bat, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> Bat </identifier>
+                NAME: Bat, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> new </identifier>
+                NAME: new, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 230 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 229 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifier> batWidth </identifier>
+                      NAME: batWidth, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 7 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> ball </identifier>
+            NAME: ball, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> Ball </identifier>
+                NAME: Ball, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> new </identifier>
+                NAME: new, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 253 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 222 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 0 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 511 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 0 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 229 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> ball </identifier>
+            NAME: ball, TYPE: int, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> setDestination </identifier>
+            NAME: setDestination, TYPE: int, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <integerConstant> 400 </integerConstant>
+              </term>
+            </expression>
+            <symbol> , </symbol>
+            <expression>
+              <term>
+                <integerConstant> 0 </integerConstant>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Screen </identifier>
+            NAME: Screen, TYPE: int, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> drawRectangle </identifier>
+            NAME: drawRectangle, TYPE: int, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <integerConstant> 0 </integerConstant>
+              </term>
+            </expression>
+            <symbol> , </symbol>
+            <expression>
+              <term>
+                <integerConstant> 238 </integerConstant>
+              </term>
+            </expression>
+            <symbol> , </symbol>
+            <expression>
+              <term>
+                <integerConstant> 511 </integerConstant>
+              </term>
+            </expression>
+            <symbol> , </symbol>
+            <expression>
+              <term>
+                <integerConstant> 240 </integerConstant>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Output </identifier>
+            NAME: Output, TYPE: int, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> moveCursor </identifier>
+            NAME: moveCursor, TYPE: int, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <integerConstant> 22 </integerConstant>
+              </term>
+            </expression>
+            <symbol> , </symbol>
+            <expression>
+              <term>
+                <integerConstant> 0 </integerConstant>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Output </identifier>
+            NAME: Output, TYPE: int, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> printString </identifier>
+            NAME: printString, TYPE: int, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <stringConstant> Score: 0 </stringConstant>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> exit </identifier>
+            NAME: exit, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <keyword> false </keyword>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> score </identifier>
+            NAME: score, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> wall </identifier>
+            NAME: wall, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> lastWall </identifier>
+            NAME: lastWall, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <keyword> this </keyword>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifier> dispose </identifier>
+      NAME: dispose, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> bat </identifier>
+            NAME: bat, TYPE: int, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> dispose </identifier>
+            NAME: dispose, TYPE: int, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> ball </identifier>
+            NAME: ball, TYPE: int, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> dispose </identifier>
+            NAME: dispose, TYPE: int, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Memory </identifier>
+            NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> deAlloc </identifier>
+            NAME: deAlloc, TYPE: int, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <keyword> this </keyword>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> newInstance </identifier>
+      NAME: newInstance, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> instance </identifier>
+            NAME: instance, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> PongGame </identifier>
+                NAME: PongGame, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> new </identifier>
+                NAME: new, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <identifier> PongGame </identifier>
+      NAME: PongGame, TYPE: int, KIND: none, INDEX: NA
+    <identifier> getInstance </identifier>
+      NAME: getInstance, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <identifier> instance </identifier>
+                NAME: instance, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifier> run </identifier>
+      NAME: run, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> char </keyword>
+        <identifier> key </identifier>
+          NAME: key, TYPE: char, KIND: var, VARINDEX: 0
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <identifier> exit </identifier>
+                  NAME: exit, TYPE: char, KIND: none, INDEX: NA
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <whileStatement>
+              <keyword> while </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> key </identifier>
+                        NAME: key, TYPE: char, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> = </symbol>
+                    <term>
+                      <integerConstant> 0 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> &amp; </symbol>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ~ </symbol>
+                      <term>
+                        <identifier> exit </identifier>
+                          NAME: exit, TYPE: char, KIND: none, INDEX: NA
+                      </term>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier> key </identifier>
+                    NAME: key, TYPE: char, KIND: none, INDEX: NA
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <identifier> Keyboard </identifier>
+                        NAME: Keyboard, TYPE: char, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> keyPressed </identifier>
+                        NAME: keyPressed, TYPE: char, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+                <doStatement>
+                  <keyword> do </keyword>
+                  <identifier> bat </identifier>
+                    NAME: bat, TYPE: char, KIND: none, INDEX: NA
+                  <symbol> . </symbol>
+                  <identifier> move </identifier>
+                    NAME: move, TYPE: char, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                  <symbol> ; </symbol>
+                </doStatement>
+                <doStatement>
+                  <keyword> do </keyword>
+                  <identifier> moveBall </identifier>
+                    NAME: moveBall, TYPE: char, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                  <symbol> ; </symbol>
+                </doStatement>
+              </statements>
+              <symbol> } </symbol>
+            </whileStatement>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> key </identifier>
+                    NAME: key, TYPE: char, KIND: none, INDEX: NA
+                </term>
+                <symbol> = </symbol>
+                <term>
+                  <integerConstant> 130 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <doStatement>
+                  <keyword> do </keyword>
+                  <identifier> bat </identifier>
+                    NAME: bat, TYPE: char, KIND: none, INDEX: NA
+                  <symbol> . </symbol>
+                  <identifier> setDirection </identifier>
+                    NAME: setDirection, TYPE: char, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                    <expression>
+                      <term>
+                        <integerConstant> 1 </integerConstant>
+                      </term>
+                    </expression>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                  <symbol> ; </symbol>
+                </doStatement>
+              </statements>
+              <symbol> } </symbol>
+              <keyword> else </keyword>
+              <symbol> { </symbol>
+              <statements>
+                <ifStatement>
+                  <keyword> if </keyword>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> key </identifier>
+                        NAME: key, TYPE: char, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> = </symbol>
+                    <term>
+                      <integerConstant> 132 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                  <symbol> { </symbol>
+                  <statements>
+                    <doStatement>
+                      <keyword> do </keyword>
+                      <identifier> bat </identifier>
+                        NAME: bat, TYPE: char, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> setDirection </identifier>
+                        NAME: setDirection, TYPE: char, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                        <expression>
+                          <term>
+                            <integerConstant> 2 </integerConstant>
+                          </term>
+                        </expression>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                      <symbol> ; </symbol>
+                    </doStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                  <keyword> else </keyword>
+                  <symbol> { </symbol>
+                  <statements>
+                    <ifStatement>
+                      <keyword> if </keyword>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> key </identifier>
+                            NAME: key, TYPE: char, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> = </symbol>
+                        <term>
+                          <integerConstant> 140 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                      <symbol> { </symbol>
+                      <statements>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> exit </identifier>
+                            NAME: exit, TYPE: char, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <keyword> true </keyword>
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                      </statements>
+                      <symbol> } </symbol>
+                    </ifStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                </ifStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+            <whileStatement>
+              <keyword> while </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ~ </symbol>
+                      <term>
+                        <symbol> ( </symbol>
+                        <expression>
+                          <term>
+                            <identifier> key </identifier>
+                              NAME: key, TYPE: char, KIND: none, INDEX: NA
+                          </term>
+                          <symbol> = </symbol>
+                          <term>
+                            <integerConstant> 0 </integerConstant>
+                          </term>
+                        </expression>
+                        <symbol> ) </symbol>
+                      </term>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> &amp; </symbol>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ~ </symbol>
+                      <term>
+                        <identifier> exit </identifier>
+                          NAME: exit, TYPE: char, KIND: none, INDEX: NA
+                      </term>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier> key </identifier>
+                    NAME: key, TYPE: char, KIND: none, INDEX: NA
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <identifier> Keyboard </identifier>
+                        NAME: Keyboard, TYPE: char, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> keyPressed </identifier>
+                        NAME: keyPressed, TYPE: char, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+                <doStatement>
+                  <keyword> do </keyword>
+                  <identifier> bat </identifier>
+                    NAME: bat, TYPE: char, KIND: none, INDEX: NA
+                  <symbol> . </symbol>
+                  <identifier> move </identifier>
+                    NAME: move, TYPE: char, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                  <symbol> ; </symbol>
+                </doStatement>
+                <doStatement>
+                  <keyword> do </keyword>
+                  <identifier> moveBall </identifier>
+                    NAME: moveBall, TYPE: char, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                  <symbol> ; </symbol>
+                </doStatement>
+              </statements>
+              <symbol> } </symbol>
+            </whileStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> exit </identifier>
+                NAME: exit, TYPE: char, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Output </identifier>
+                NAME: Output, TYPE: char, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> moveCursor </identifier>
+                NAME: moveCursor, TYPE: char, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 10 </integerConstant>
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 27 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Output </identifier>
+                NAME: Output, TYPE: char, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> printString </identifier>
+                NAME: printString, TYPE: char, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <stringConstant> Game Over </stringConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifier> moveBall </identifier>
+      NAME: moveBall, TYPE: char, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> bouncingDirection </identifier>
+          NAME: bouncingDirection, TYPE: int, KIND: var, VARINDEX: 0
+        <symbol> , </symbol>
+        <identifier> batLeft </identifier>
+          NAME: batLeft, TYPE: int, KIND: var, VARINDEX: 1
+        <symbol> , </symbol>
+        <identifier> batRight </identifier>
+          NAME: batRight, TYPE: int, KIND: var, VARINDEX: 2
+        <symbol> , </symbol>
+        <identifier> ballLeft </identifier>
+          NAME: ballLeft, TYPE: int, KIND: var, VARINDEX: 3
+        <symbol> , </symbol>
+        <identifier> ballRight </identifier>
+          NAME: ballRight, TYPE: int, KIND: var, VARINDEX: 4
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> wall </identifier>
+            NAME: wall, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> ball </identifier>
+                NAME: ball, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> move </identifier>
+                NAME: move, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> wall </identifier>
+                    NAME: wall, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> &amp; </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <symbol> ~ </symbol>
+                  <term>
+                    <symbol> ( </symbol>
+                    <expression>
+                      <term>
+                        <identifier> wall </identifier>
+                          NAME: wall, TYPE: int, KIND: none, INDEX: NA
+                      </term>
+                      <symbol> = </symbol>
+                      <term>
+                        <identifier> lastWall </identifier>
+                          NAME: lastWall, TYPE: int, KIND: none, INDEX: NA
+                      </term>
+                    </expression>
+                    <symbol> ) </symbol>
+                  </term>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> lastWall </identifier>
+                NAME: lastWall, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> wall </identifier>
+                    NAME: wall, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> bouncingDirection </identifier>
+                NAME: bouncingDirection, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> batLeft </identifier>
+                NAME: batLeft, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> bat </identifier>
+                    NAME: bat, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> . </symbol>
+                  <identifier> getLeft </identifier>
+                    NAME: getLeft, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> batRight </identifier>
+                NAME: batRight, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> bat </identifier>
+                    NAME: bat, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> . </symbol>
+                  <identifier> getRight </identifier>
+                    NAME: getRight, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> ballLeft </identifier>
+                NAME: ballLeft, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> ball </identifier>
+                    NAME: ball, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> . </symbol>
+                  <identifier> getLeft </identifier>
+                    NAME: getLeft, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> ballRight </identifier>
+                NAME: ballRight, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> ball </identifier>
+                    NAME: ball, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> . </symbol>
+                  <identifier> getRight </identifier>
+                    NAME: getRight, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> wall </identifier>
+                    NAME: wall, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> = </symbol>
+                <term>
+                  <integerConstant> 4 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier> exit </identifier>
+                    NAME: exit, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> batLeft </identifier>
+                            NAME: batLeft, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &gt; </symbol>
+                        <term>
+                          <identifier> ballRight </identifier>
+                            NAME: ballRight, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                    <symbol> | </symbol>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> batRight </identifier>
+                            NAME: batRight, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &lt; </symbol>
+                        <term>
+                          <identifier> ballLeft </identifier>
+                            NAME: ballLeft, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+                <ifStatement>
+                  <keyword> if </keyword>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ~ </symbol>
+                      <term>
+                        <identifier> exit </identifier>
+                          NAME: exit, TYPE: int, KIND: none, INDEX: NA
+                      </term>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                  <symbol> { </symbol>
+                  <statements>
+                    <ifStatement>
+                      <keyword> if </keyword>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> ballRight </identifier>
+                            NAME: ballRight, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &lt; </symbol>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier> batLeft </identifier>
+                                NAME: batLeft, TYPE: int, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <integerConstant> 10 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                      <symbol> { </symbol>
+                      <statements>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> bouncingDirection </identifier>
+                            NAME: bouncingDirection, TYPE: int, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <symbol> - </symbol>
+                              <term>
+                                <integerConstant> 1 </integerConstant>
+                              </term>
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                      </statements>
+                      <symbol> } </symbol>
+                      <keyword> else </keyword>
+                      <symbol> { </symbol>
+                      <statements>
+                        <ifStatement>
+                          <keyword> if </keyword>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier> ballLeft </identifier>
+                                NAME: ballLeft, TYPE: int, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> &gt; </symbol>
+                            <term>
+                              <symbol> ( </symbol>
+                              <expression>
+                                <term>
+                                  <identifier> batRight </identifier>
+                                    NAME: batRight, TYPE: int, KIND: none, INDEX: NA
+                                </term>
+                                <symbol> - </symbol>
+                                <term>
+                                  <integerConstant> 10 </integerConstant>
+                                </term>
+                              </expression>
+                              <symbol> ) </symbol>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                          <symbol> { </symbol>
+                          <statements>
+                            <letStatement>
+                              <keyword> let </keyword>
+                              <identifier> bouncingDirection </identifier>
+                                NAME: bouncingDirection, TYPE: int, KIND: none, INDEX: NA
+                              <symbol> = </symbol>
+                              <expression>
+                                <term>
+                                  <integerConstant> 1 </integerConstant>
+                                </term>
+                              </expression>
+                              <symbol> ; </symbol>
+                            </letStatement>
+                          </statements>
+                          <symbol> } </symbol>
+                        </ifStatement>
+                      </statements>
+                      <symbol> } </symbol>
+                    </ifStatement>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier> batWidth </identifier>
+                        NAME: batWidth, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <identifier> batWidth </identifier>
+                            NAME: batWidth, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> - </symbol>
+                        <term>
+                          <integerConstant> 2 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                    <doStatement>
+                      <keyword> do </keyword>
+                      <identifier> bat </identifier>
+                        NAME: bat, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> setWidth </identifier>
+                        NAME: setWidth, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                        <expression>
+                          <term>
+                            <identifier> batWidth </identifier>
+                              NAME: batWidth, TYPE: int, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                      <symbol> ; </symbol>
+                    </doStatement>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier> score </identifier>
+                        NAME: score, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <identifier> score </identifier>
+                            NAME: score, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> + </symbol>
+                        <term>
+                          <integerConstant> 1 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                    <doStatement>
+                      <keyword> do </keyword>
+                      <identifier> Output </identifier>
+                        NAME: Output, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> moveCursor </identifier>
+                        NAME: moveCursor, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                        <expression>
+                          <term>
+                            <integerConstant> 22 </integerConstant>
+                          </term>
+                        </expression>
+                        <symbol> , </symbol>
+                        <expression>
+                          <term>
+                            <integerConstant> 7 </integerConstant>
+                          </term>
+                        </expression>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                      <symbol> ; </symbol>
+                    </doStatement>
+                    <doStatement>
+                      <keyword> do </keyword>
+                      <identifier> Output </identifier>
+                        NAME: Output, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> printInt </identifier>
+                        NAME: printInt, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                        <expression>
+                          <term>
+                            <identifier> score </identifier>
+                              NAME: score, TYPE: int, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                      <symbol> ; </symbol>
+                    </doStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                </ifStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> ball </identifier>
+                NAME: ball, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> bounce </identifier>
+                NAME: bounce, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> bouncingDirection </identifier>
+                      NAME: bouncingDirection, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <symbol> } </symbol>
+</class>

@@ -1,0 +1,3731 @@
+<class>
+  <keyword> class </keyword>
+  <identifier> Screen </identifier>
+    NAME: Screen, TYPE: none, KIND: none, INDEX: NA
+  <symbol> { </symbol>
+  <classVarDec>
+    <keyword> static </keyword>
+    <keyword> boolean </keyword>
+    <identifier> color </identifier>
+      NAME: color, TYPE: boolean, KIND: static, STATICINDEX: 0
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> static </keyword>
+    <keyword> int </keyword>
+    <identifier> maxRows </identifier>
+      NAME: maxRows, TYPE: int, KIND: static, STATICINDEX: 1
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> static </keyword>
+    <keyword> int </keyword>
+    <identifier> maxCols </identifier>
+      NAME: maxCols, TYPE: int, KIND: static, STATICINDEX: 2
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> static </keyword>
+    <keyword> int </keyword>
+    <identifier> screenMapStartAddress </identifier>
+      NAME: screenMapStartAddress, TYPE: int, KIND: static, STATICINDEX: 3
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> static </keyword>
+    <keyword> int </keyword>
+    <identifier> screenMapStopAddress </identifier>
+      NAME: screenMapStopAddress, TYPE: int, KIND: static, STATICINDEX: 4
+    <symbol> ; </symbol>
+  </classVarDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> init </identifier>
+      NAME: init, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> color </identifier>
+            NAME: color, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <keyword> true </keyword>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> maxRows </identifier>
+            NAME: maxRows, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 255 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> maxCols </identifier>
+            NAME: maxCols, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 511 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> screenMapStartAddress </identifier>
+            NAME: screenMapStartAddress, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 16384 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> screenMapStopAddress </identifier>
+            NAME: screenMapStopAddress, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 24576 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> clearScreen </identifier>
+      NAME: clearScreen, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> i </identifier>
+          NAME: i, TYPE: int, KIND: var, VARINDEX: 0
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> i </identifier>
+            NAME: i, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> screenMapStartAddress </identifier>
+                NAME: screenMapStartAddress, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> i </identifier>
+                NAME: i, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> &lt; </symbol>
+            <term>
+              <identifier> screenMapStopAddress </identifier>
+                NAME: screenMapStopAddress, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Memory </identifier>
+                NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> poke </identifier>
+                NAME: poke, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> i </identifier>
+                      NAME: i, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 0 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> i </identifier>
+                NAME: i, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> i </identifier>
+                    NAME: i, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> setColor </identifier>
+      NAME: setColor, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> boolean </keyword>
+      <identifier> b </identifier>
+        NAME: b, TYPE: boolean, KIND: argument, ARGINDEX: 0
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> color </identifier>
+            NAME: color, TYPE: boolean, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> b </identifier>
+                NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> drawPixel </identifier>
+      NAME: drawPixel, TYPE: boolean, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> x </identifier>
+        NAME: x, TYPE: int, KIND: argument, ARGINDEX: 0
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> y </identifier>
+        NAME: y, TYPE: int, KIND: argument, ARGINDEX: 1
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> targetAddress </identifier>
+          NAME: targetAddress, TYPE: int, KIND: var, VARINDEX: 0
+        <symbol> ; </symbol>
+      </varDec>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> mask </identifier>
+          NAME: mask, TYPE: int, KIND: var, VARINDEX: 1
+        <symbol> ; </symbol>
+      </varDec>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> i </identifier>
+          NAME: i, TYPE: int, KIND: var, VARINDEX: 2
+        <symbol> ; </symbol>
+      </varDec>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> targetBit </identifier>
+          NAME: targetBit, TYPE: int, KIND: var, VARINDEX: 3
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x </identifier>
+                    NAME: x, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x </identifier>
+                    NAME: x, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxCols </identifier>
+                    NAME: maxCols, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y </identifier>
+                    NAME: y, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y </identifier>
+                    NAME: y, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxRows </identifier>
+                    NAME: maxRows, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Sys </identifier>
+                NAME: Sys, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> error </identifier>
+                NAME: error, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 7 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> targetAddress </identifier>
+            NAME: targetAddress, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> screenMapStartAddress </identifier>
+                NAME: screenMapStartAddress, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> + </symbol>
+            <term>
+              <identifier> Math </identifier>
+                NAME: Math, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> multiply </identifier>
+                NAME: multiply, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> y </identifier>
+                      NAME: y, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 32 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> + </symbol>
+            <term>
+              <identifier> Math </identifier>
+                NAME: Math, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> divide </identifier>
+                NAME: divide, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> x </identifier>
+                      NAME: x, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 16 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> mask </identifier>
+            NAME: mask, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 1 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> i </identifier>
+            NAME: i, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> targetBit </identifier>
+            NAME: targetBit, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> Math </identifier>
+                NAME: Math, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> remainder </identifier>
+                NAME: remainder, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> x </identifier>
+                      NAME: x, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 16 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <symbol> ( </symbol>
+                <expression>
+                  <term>
+                    <identifier> i </identifier>
+                      NAME: i, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                  <symbol> = </symbol>
+                  <term>
+                    <identifier> targetBit </identifier>
+                      NAME: targetBit, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> ) </symbol>
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> mask </identifier>
+                NAME: mask, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> mask </identifier>
+                    NAME: mask, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <identifier> mask </identifier>
+                    NAME: mask, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> i </identifier>
+                NAME: i, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> i </identifier>
+                    NAME: i, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> color </identifier>
+                NAME: color, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Memory </identifier>
+                NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> poke </identifier>
+                NAME: poke, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> targetAddress </identifier>
+                      NAME: targetAddress, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <symbol> ( </symbol>
+                    <expression>
+                      <term>
+                        <identifier> Memory </identifier>
+                          NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+                        <symbol> . </symbol>
+                        <identifier> peek </identifier>
+                          NAME: peek, TYPE: int, KIND: none, INDEX: NA
+                        <symbol> ( </symbol>
+                        <expressionList>
+                          <expression>
+                            <term>
+                              <identifier> targetAddress </identifier>
+                                NAME: targetAddress, TYPE: int, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                        </expressionList>
+                        <symbol> ) </symbol>
+                      </term>
+                      <symbol> | </symbol>
+                      <term>
+                        <identifier> mask </identifier>
+                          NAME: mask, TYPE: int, KIND: none, INDEX: NA
+                      </term>
+                    </expression>
+                    <symbol> ) </symbol>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+          <keyword> else </keyword>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> mask </identifier>
+                NAME: mask, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <symbol> - </symbol>
+                  <term>
+                    <identifier> mask </identifier>
+                      NAME: mask, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> mask </identifier>
+                NAME: mask, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> mask </identifier>
+                    NAME: mask, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> - </symbol>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Memory </identifier>
+                NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> poke </identifier>
+                NAME: poke, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> targetAddress </identifier>
+                      NAME: targetAddress, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <symbol> ( </symbol>
+                    <expression>
+                      <term>
+                        <identifier> Memory </identifier>
+                          NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+                        <symbol> . </symbol>
+                        <identifier> peek </identifier>
+                          NAME: peek, TYPE: int, KIND: none, INDEX: NA
+                        <symbol> ( </symbol>
+                        <expressionList>
+                          <expression>
+                            <term>
+                              <identifier> targetAddress </identifier>
+                                NAME: targetAddress, TYPE: int, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                        </expressionList>
+                        <symbol> ) </symbol>
+                      </term>
+                      <symbol> &amp; </symbol>
+                      <term>
+                        <identifier> mask </identifier>
+                          NAME: mask, TYPE: int, KIND: none, INDEX: NA
+                      </term>
+                    </expression>
+                    <symbol> ) </symbol>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> drawLine </identifier>
+      NAME: drawLine, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> x1 </identifier>
+        NAME: x1, TYPE: int, KIND: argument, ARGINDEX: 0
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> y1 </identifier>
+        NAME: y1, TYPE: int, KIND: argument, ARGINDEX: 1
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> x2 </identifier>
+        NAME: x2, TYPE: int, KIND: argument, ARGINDEX: 2
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> y2 </identifier>
+        NAME: y2, TYPE: int, KIND: argument, ARGINDEX: 3
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> xDifference </identifier>
+          NAME: xDifference, TYPE: int, KIND: var, VARINDEX: 0
+        <symbol> , </symbol>
+        <identifier> yDifference </identifier>
+          NAME: yDifference, TYPE: int, KIND: var, VARINDEX: 1
+        <symbol> ; </symbol>
+      </varDec>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> a </identifier>
+          NAME: a, TYPE: int, KIND: var, VARINDEX: 2
+        <symbol> , </symbol>
+        <identifier> b </identifier>
+          NAME: b, TYPE: int, KIND: var, VARINDEX: 3
+        <symbol> ; </symbol>
+      </varDec>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> a_yD_Minus_b_xD </identifier>
+          NAME: a_yD_Minus_b_xD, TYPE: int, KIND: var, VARINDEX: 4
+        <symbol> ; </symbol>
+      </varDec>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> boolean </keyword>
+        <identifier> isStraight </identifier>
+          NAME: isStraight, TYPE: boolean, KIND: var, VARINDEX: 5
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x1 </identifier>
+                    NAME: x1, TYPE: boolean, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x1 </identifier>
+                    NAME: x1, TYPE: boolean, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxCols </identifier>
+                    NAME: maxCols, TYPE: boolean, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y1 </identifier>
+                    NAME: y1, TYPE: boolean, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y1 </identifier>
+                    NAME: y1, TYPE: boolean, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxRows </identifier>
+                    NAME: maxRows, TYPE: boolean, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x2 </identifier>
+                    NAME: x2, TYPE: boolean, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x2 </identifier>
+                    NAME: x2, TYPE: boolean, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxCols </identifier>
+                    NAME: maxCols, TYPE: boolean, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y2 </identifier>
+                    NAME: y2, TYPE: boolean, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y2 </identifier>
+                    NAME: y2, TYPE: boolean, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxRows </identifier>
+                    NAME: maxRows, TYPE: boolean, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Sys </identifier>
+                NAME: Sys, TYPE: boolean, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> error </identifier>
+                NAME: error, TYPE: boolean, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 8 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> xDifference </identifier>
+            NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> x2 </identifier>
+                NAME: x2, TYPE: boolean, KIND: none, INDEX: NA
+            </term>
+            <symbol> - </symbol>
+            <term>
+              <identifier> x1 </identifier>
+                NAME: x1, TYPE: boolean, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> yDifference </identifier>
+            NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> y2 </identifier>
+                NAME: y2, TYPE: boolean, KIND: none, INDEX: NA
+            </term>
+            <symbol> - </symbol>
+            <term>
+              <identifier> y1 </identifier>
+                NAME: y1, TYPE: boolean, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> a </identifier>
+            NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> b </identifier>
+            NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> a_yD_Minus_b_xD </identifier>
+            NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> isStraight </identifier>
+            NAME: isStraight, TYPE: boolean, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <keyword> false </keyword>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> xDifference </identifier>
+                NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+            </term>
+            <symbol> = </symbol>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> isStraight </identifier>
+                NAME: isStraight, TYPE: boolean, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <keyword> true </keyword>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Screen </identifier>
+                NAME: Screen, TYPE: boolean, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> drawVertical </identifier>
+                NAME: drawVertical, TYPE: boolean, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> y1 </identifier>
+                      NAME: y1, TYPE: boolean, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifier> y2 </identifier>
+                      NAME: y2, TYPE: boolean, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifier> x1 </identifier>
+                      NAME: x1, TYPE: boolean, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> yDifference </identifier>
+                NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+            </term>
+            <symbol> = </symbol>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> isStraight </identifier>
+                NAME: isStraight, TYPE: boolean, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <keyword> true </keyword>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Screen </identifier>
+                NAME: Screen, TYPE: boolean, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> drawHorizontal </identifier>
+                NAME: drawHorizontal, TYPE: boolean, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> x1 </identifier>
+                      NAME: x1, TYPE: boolean, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifier> x2 </identifier>
+                      NAME: x2, TYPE: boolean, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifier> y1 </identifier>
+                      NAME: y1, TYPE: boolean, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <symbol> ( </symbol>
+                <expression>
+                  <term>
+                    <identifier> isStraight </identifier>
+                      NAME: isStraight, TYPE: boolean, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> ) </symbol>
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> xDifference </identifier>
+                        NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> &gt; </symbol>
+                    <term>
+                      <integerConstant> 0 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> &amp; </symbol>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> yDifference </identifier>
+                        NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> &gt; </symbol>
+                    <term>
+                      <integerConstant> 0 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <whileStatement>
+                  <keyword> while </keyword>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> a </identifier>
+                            NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &lt; </symbol>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier> xDifference </identifier>
+                                NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                    <symbol> &amp; </symbol>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> b </identifier>
+                            NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &lt; </symbol>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier> yDifference </identifier>
+                                NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                  <symbol> { </symbol>
+                  <statements>
+                    <doStatement>
+                      <keyword> do </keyword>
+                      <identifier> Screen </identifier>
+                        NAME: Screen, TYPE: boolean, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> drawPixel </identifier>
+                        NAME: drawPixel, TYPE: boolean, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                        <expression>
+                          <term>
+                            <identifier> x1 </identifier>
+                              NAME: x1, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                          <symbol> + </symbol>
+                          <term>
+                            <identifier> a </identifier>
+                              NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                        <symbol> , </symbol>
+                        <expression>
+                          <term>
+                            <identifier> y1 </identifier>
+                              NAME: y1, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                          <symbol> + </symbol>
+                          <term>
+                            <identifier> b </identifier>
+                              NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                      <symbol> ; </symbol>
+                    </doStatement>
+                    <ifStatement>
+                      <keyword> if </keyword>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> a_yD_Minus_b_xD </identifier>
+                            NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &lt; </symbol>
+                        <term>
+                          <integerConstant> 0 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                      <symbol> { </symbol>
+                      <statements>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> a </identifier>
+                            NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> a </identifier>
+                                NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> a_yD_Minus_b_xD </identifier>
+                            NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> a_yD_Minus_b_xD </identifier>
+                                NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <identifier> yDifference </identifier>
+                                NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                      </statements>
+                      <symbol> } </symbol>
+                      <keyword> else </keyword>
+                      <symbol> { </symbol>
+                      <statements>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> b </identifier>
+                            NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> b </identifier>
+                                NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> a_yD_Minus_b_xD </identifier>
+                            NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> a_yD_Minus_b_xD </identifier>
+                                NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> - </symbol>
+                            <term>
+                              <identifier> xDifference </identifier>
+                                NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                      </statements>
+                      <symbol> } </symbol>
+                    </ifStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                </whileStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> xDifference </identifier>
+                        NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> &gt; </symbol>
+                    <term>
+                      <integerConstant> 0 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> &amp; </symbol>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> yDifference </identifier>
+                        NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> &lt; </symbol>
+                    <term>
+                      <integerConstant> 0 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <whileStatement>
+                  <keyword> while </keyword>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> a </identifier>
+                            NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &lt; </symbol>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier> xDifference </identifier>
+                                NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                    <symbol> &amp; </symbol>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> b </identifier>
+                            NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &gt; </symbol>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier> yDifference </identifier>
+                                NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> - </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                  <symbol> { </symbol>
+                  <statements>
+                    <doStatement>
+                      <keyword> do </keyword>
+                      <identifier> Screen </identifier>
+                        NAME: Screen, TYPE: boolean, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> drawPixel </identifier>
+                        NAME: drawPixel, TYPE: boolean, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                        <expression>
+                          <term>
+                            <identifier> x1 </identifier>
+                              NAME: x1, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                          <symbol> + </symbol>
+                          <term>
+                            <identifier> a </identifier>
+                              NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                        <symbol> , </symbol>
+                        <expression>
+                          <term>
+                            <identifier> y1 </identifier>
+                              NAME: y1, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                          <symbol> + </symbol>
+                          <term>
+                            <identifier> b </identifier>
+                              NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                      <symbol> ; </symbol>
+                    </doStatement>
+                    <ifStatement>
+                      <keyword> if </keyword>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> a_yD_Minus_b_xD </identifier>
+                            NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &lt; </symbol>
+                        <term>
+                          <integerConstant> 0 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                      <symbol> { </symbol>
+                      <statements>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> a </identifier>
+                            NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> a </identifier>
+                                NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> a_yD_Minus_b_xD </identifier>
+                            NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> a_yD_Minus_b_xD </identifier>
+                                NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> - </symbol>
+                            <term>
+                              <identifier> yDifference </identifier>
+                                NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                      </statements>
+                      <symbol> } </symbol>
+                      <keyword> else </keyword>
+                      <symbol> { </symbol>
+                      <statements>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> b </identifier>
+                            NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> b </identifier>
+                                NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> - </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> a_yD_Minus_b_xD </identifier>
+                            NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> a_yD_Minus_b_xD </identifier>
+                                NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> - </symbol>
+                            <term>
+                              <identifier> xDifference </identifier>
+                                NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                      </statements>
+                      <symbol> } </symbol>
+                    </ifStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                </whileStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> xDifference </identifier>
+                        NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> &lt; </symbol>
+                    <term>
+                      <integerConstant> 0 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> &amp; </symbol>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> yDifference </identifier>
+                        NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> &gt; </symbol>
+                    <term>
+                      <integerConstant> 0 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <whileStatement>
+                  <keyword> while </keyword>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> a </identifier>
+                            NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &gt; </symbol>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier> xDifference </identifier>
+                                NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> - </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                    <symbol> &amp; </symbol>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> b </identifier>
+                            NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &lt; </symbol>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier> yDifference </identifier>
+                                NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                  <symbol> { </symbol>
+                  <statements>
+                    <doStatement>
+                      <keyword> do </keyword>
+                      <identifier> Screen </identifier>
+                        NAME: Screen, TYPE: boolean, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> drawPixel </identifier>
+                        NAME: drawPixel, TYPE: boolean, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                        <expression>
+                          <term>
+                            <identifier> x1 </identifier>
+                              NAME: x1, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                          <symbol> + </symbol>
+                          <term>
+                            <identifier> a </identifier>
+                              NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                        <symbol> , </symbol>
+                        <expression>
+                          <term>
+                            <identifier> y1 </identifier>
+                              NAME: y1, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                          <symbol> + </symbol>
+                          <term>
+                            <identifier> b </identifier>
+                              NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                      <symbol> ; </symbol>
+                    </doStatement>
+                    <ifStatement>
+                      <keyword> if </keyword>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> a_yD_Minus_b_xD </identifier>
+                            NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &lt; </symbol>
+                        <term>
+                          <integerConstant> 0 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                      <symbol> { </symbol>
+                      <statements>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> a </identifier>
+                            NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> a </identifier>
+                                NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> - </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> a_yD_Minus_b_xD </identifier>
+                            NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> a_yD_Minus_b_xD </identifier>
+                                NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <identifier> yDifference </identifier>
+                                NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                      </statements>
+                      <symbol> } </symbol>
+                      <keyword> else </keyword>
+                      <symbol> { </symbol>
+                      <statements>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> b </identifier>
+                            NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> b </identifier>
+                                NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> a_yD_Minus_b_xD </identifier>
+                            NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> a_yD_Minus_b_xD </identifier>
+                                NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <identifier> xDifference </identifier>
+                                NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                      </statements>
+                      <symbol> } </symbol>
+                    </ifStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                </whileStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> xDifference </identifier>
+                        NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> &lt; </symbol>
+                    <term>
+                      <integerConstant> 0 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> &amp; </symbol>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> yDifference </identifier>
+                        NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> &lt; </symbol>
+                    <term>
+                      <integerConstant> 0 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <whileStatement>
+                  <keyword> while </keyword>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> a </identifier>
+                            NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &gt; </symbol>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier> xDifference </identifier>
+                                NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> - </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                    <symbol> &amp; </symbol>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> b </identifier>
+                            NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &gt; </symbol>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier> yDifference </identifier>
+                                NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> - </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                  <symbol> { </symbol>
+                  <statements>
+                    <doStatement>
+                      <keyword> do </keyword>
+                      <identifier> Screen </identifier>
+                        NAME: Screen, TYPE: boolean, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> drawPixel </identifier>
+                        NAME: drawPixel, TYPE: boolean, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                        <expression>
+                          <term>
+                            <identifier> x1 </identifier>
+                              NAME: x1, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                          <symbol> + </symbol>
+                          <term>
+                            <identifier> a </identifier>
+                              NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                        <symbol> , </symbol>
+                        <expression>
+                          <term>
+                            <identifier> y1 </identifier>
+                              NAME: y1, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                          <symbol> + </symbol>
+                          <term>
+                            <identifier> b </identifier>
+                              NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                      <symbol> ; </symbol>
+                    </doStatement>
+                    <ifStatement>
+                      <keyword> if </keyword>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> a_yD_Minus_b_xD </identifier>
+                            NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &lt; </symbol>
+                        <term>
+                          <integerConstant> 0 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                      <symbol> { </symbol>
+                      <statements>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> a </identifier>
+                            NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> a </identifier>
+                                NAME: a, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> - </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> a_yD_Minus_b_xD </identifier>
+                            NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> a_yD_Minus_b_xD </identifier>
+                                NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> - </symbol>
+                            <term>
+                              <identifier> yDifference </identifier>
+                                NAME: yDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                      </statements>
+                      <symbol> } </symbol>
+                      <keyword> else </keyword>
+                      <symbol> { </symbol>
+                      <statements>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> b </identifier>
+                            NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> b </identifier>
+                                NAME: b, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> - </symbol>
+                            <term>
+                              <integerConstant> 1 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> a_yD_Minus_b_xD </identifier>
+                            NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> a_yD_Minus_b_xD </identifier>
+                                NAME: a_yD_Minus_b_xD, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <identifier> xDifference </identifier>
+                                NAME: xDifference, TYPE: boolean, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                      </statements>
+                      <symbol> } </symbol>
+                    </ifStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                </whileStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> drawRectangle </identifier>
+      NAME: drawRectangle, TYPE: boolean, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> x1 </identifier>
+        NAME: x1, TYPE: int, KIND: argument, ARGINDEX: 0
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> y1 </identifier>
+        NAME: y1, TYPE: int, KIND: argument, ARGINDEX: 1
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> x2 </identifier>
+        NAME: x2, TYPE: int, KIND: argument, ARGINDEX: 2
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> y2 </identifier>
+        NAME: y2, TYPE: int, KIND: argument, ARGINDEX: 3
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x2 </identifier>
+                    NAME: x2, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <identifier> x1 </identifier>
+                    NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y2 </identifier>
+                    NAME: y2, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <identifier> y2 </identifier>
+                    NAME: y2, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Sys </identifier>
+                NAME: Sys, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> error </identifier>
+                NAME: error, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 9 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> y1 </identifier>
+                NAME: y1, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> &lt; </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y2 </identifier>
+                    NAME: y2, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Screen </identifier>
+                NAME: Screen, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> drawHorizontal </identifier>
+                NAME: drawHorizontal, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> x1 </identifier>
+                      NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifier> x2 </identifier>
+                      NAME: x2, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifier> y1 </identifier>
+                      NAME: y1, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> y1 </identifier>
+                NAME: y1, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> y1 </identifier>
+                    NAME: y1, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> drawCircle </identifier>
+      NAME: drawCircle, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> cx </identifier>
+        NAME: cx, TYPE: int, KIND: argument, ARGINDEX: 0
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> cy </identifier>
+        NAME: cy, TYPE: int, KIND: argument, ARGINDEX: 1
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> r </identifier>
+        NAME: r, TYPE: int, KIND: argument, ARGINDEX: 2
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> leftX </identifier>
+          NAME: leftX, TYPE: int, KIND: var, VARINDEX: 0
+        <symbol> , </symbol>
+        <identifier> rightX </identifier>
+          NAME: rightX, TYPE: int, KIND: var, VARINDEX: 1
+        <symbol> ; </symbol>
+      </varDec>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> dy </identifier>
+          NAME: dy, TYPE: int, KIND: var, VARINDEX: 2
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> dy </identifier>
+            NAME: dy, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <symbol> - </symbol>
+              <term>
+                <identifier> r </identifier>
+                  NAME: r, TYPE: int, KIND: none, INDEX: NA
+              </term>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> cx </identifier>
+                    NAME: cx, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> cx </identifier>
+                    NAME: cx, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxCols </identifier>
+                    NAME: maxCols, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> cy </identifier>
+                    NAME: cy, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> cy </identifier>
+                    NAME: cy, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxRows </identifier>
+                    NAME: maxRows, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Sys </identifier>
+                NAME: Sys, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> error </identifier>
+                NAME: error, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 12 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> cx </identifier>
+                        NAME: cx, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <identifier> r </identifier>
+                        NAME: r, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxCols </identifier>
+                    NAME: maxCols, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> cx </identifier>
+                        NAME: cx, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> - </symbol>
+                    <term>
+                      <identifier> r </identifier>
+                        NAME: r, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> cy </identifier>
+                        NAME: cy, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <identifier> r </identifier>
+                        NAME: r, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxRows </identifier>
+                    NAME: maxRows, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> cy </identifier>
+                        NAME: cy, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> - </symbol>
+                    <term>
+                      <identifier> r </identifier>
+                        NAME: r, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Sys </identifier>
+                NAME: Sys, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> error </identifier>
+                NAME: error, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 13 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> r </identifier>
+                NAME: r, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> &gt; </symbol>
+            <term>
+              <integerConstant> 181 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Sys </identifier>
+                NAME: Sys, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> error </identifier>
+                NAME: error, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 13 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> dy </identifier>
+                NAME: dy, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> &lt; </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> r </identifier>
+                    NAME: r, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> leftX </identifier>
+                NAME: leftX, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> cx </identifier>
+                    NAME: cx, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> - </symbol>
+                <term>
+                  <identifier> Math </identifier>
+                    NAME: Math, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> . </symbol>
+                  <identifier> sqrt </identifier>
+                    NAME: sqrt, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                    <expression>
+                      <term>
+                        <identifier> Math </identifier>
+                          NAME: Math, TYPE: int, KIND: none, INDEX: NA
+                        <symbol> . </symbol>
+                        <identifier> multiply </identifier>
+                          NAME: multiply, TYPE: int, KIND: none, INDEX: NA
+                        <symbol> ( </symbol>
+                        <expressionList>
+                          <expression>
+                            <term>
+                              <identifier> r </identifier>
+                                NAME: r, TYPE: int, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                          <symbol> , </symbol>
+                          <expression>
+                            <term>
+                              <identifier> r </identifier>
+                                NAME: r, TYPE: int, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                        </expressionList>
+                        <symbol> ) </symbol>
+                      </term>
+                      <symbol> - </symbol>
+                      <term>
+                        <identifier> Math </identifier>
+                          NAME: Math, TYPE: int, KIND: none, INDEX: NA
+                        <symbol> . </symbol>
+                        <identifier> multiply </identifier>
+                          NAME: multiply, TYPE: int, KIND: none, INDEX: NA
+                        <symbol> ( </symbol>
+                        <expressionList>
+                          <expression>
+                            <term>
+                              <identifier> dy </identifier>
+                                NAME: dy, TYPE: int, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                          <symbol> , </symbol>
+                          <expression>
+                            <term>
+                              <identifier> dy </identifier>
+                                NAME: dy, TYPE: int, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                        </expressionList>
+                        <symbol> ) </symbol>
+                      </term>
+                    </expression>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> rightX </identifier>
+                NAME: rightX, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> cx </identifier>
+                    NAME: cx, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <identifier> Math </identifier>
+                    NAME: Math, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> . </symbol>
+                  <identifier> sqrt </identifier>
+                    NAME: sqrt, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                    <expression>
+                      <term>
+                        <identifier> Math </identifier>
+                          NAME: Math, TYPE: int, KIND: none, INDEX: NA
+                        <symbol> . </symbol>
+                        <identifier> multiply </identifier>
+                          NAME: multiply, TYPE: int, KIND: none, INDEX: NA
+                        <symbol> ( </symbol>
+                        <expressionList>
+                          <expression>
+                            <term>
+                              <identifier> r </identifier>
+                                NAME: r, TYPE: int, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                          <symbol> , </symbol>
+                          <expression>
+                            <term>
+                              <identifier> r </identifier>
+                                NAME: r, TYPE: int, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                        </expressionList>
+                        <symbol> ) </symbol>
+                      </term>
+                      <symbol> - </symbol>
+                      <term>
+                        <identifier> Math </identifier>
+                          NAME: Math, TYPE: int, KIND: none, INDEX: NA
+                        <symbol> . </symbol>
+                        <identifier> multiply </identifier>
+                          NAME: multiply, TYPE: int, KIND: none, INDEX: NA
+                        <symbol> ( </symbol>
+                        <expressionList>
+                          <expression>
+                            <term>
+                              <identifier> dy </identifier>
+                                NAME: dy, TYPE: int, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                          <symbol> , </symbol>
+                          <expression>
+                            <term>
+                              <identifier> dy </identifier>
+                                NAME: dy, TYPE: int, KIND: none, INDEX: NA
+                            </term>
+                          </expression>
+                        </expressionList>
+                        <symbol> ) </symbol>
+                      </term>
+                    </expression>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Screen </identifier>
+                NAME: Screen, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> drawHorizontal </identifier>
+                NAME: drawHorizontal, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> leftX </identifier>
+                      NAME: leftX, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifier> rightX </identifier>
+                      NAME: rightX, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifier> cy </identifier>
+                      NAME: cy, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                  <symbol> + </symbol>
+                  <term>
+                    <identifier> dy </identifier>
+                      NAME: dy, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> dy </identifier>
+                NAME: dy, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> dy </identifier>
+                    NAME: dy, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> drawHorizontal </identifier>
+      NAME: drawHorizontal, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> x1 </identifier>
+        NAME: x1, TYPE: int, KIND: argument, ARGINDEX: 0
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> x2 </identifier>
+        NAME: x2, TYPE: int, KIND: argument, ARGINDEX: 1
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> y </identifier>
+        NAME: y, TYPE: int, KIND: argument, ARGINDEX: 2
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x1 </identifier>
+                    NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x1 </identifier>
+                    NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxCols </identifier>
+                    NAME: maxCols, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x2 </identifier>
+                    NAME: x2, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x2 </identifier>
+                    NAME: x2, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxCols </identifier>
+                    NAME: maxCols, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y </identifier>
+                    NAME: y, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y </identifier>
+                    NAME: y, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxRows </identifier>
+                    NAME: maxRows, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Sys </identifier>
+                NAME: Sys, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> error </identifier>
+                NAME: error, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 8 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> x2 </identifier>
+                NAME: x2, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> &lt; </symbol>
+            <term>
+              <identifier> x1 </identifier>
+                NAME: x1, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Screen </identifier>
+                NAME: Screen, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> drawHorizontal </identifier>
+                NAME: drawHorizontal, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> x2 </identifier>
+                      NAME: x2, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifier> x1 </identifier>
+                      NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifier> y </identifier>
+                      NAME: y, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+          <keyword> else </keyword>
+          <symbol> { </symbol>
+          <statements>
+            <whileStatement>
+              <keyword> while </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x1 </identifier>
+                    NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> x2 </identifier>
+                        NAME: x2, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <integerConstant> 1 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <ifStatement>
+                  <keyword> if </keyword>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> Math </identifier>
+                            NAME: Math, TYPE: int, KIND: none, INDEX: NA
+                          <symbol> . </symbol>
+                          <identifier> remainder </identifier>
+                            NAME: remainder, TYPE: int, KIND: none, INDEX: NA
+                          <symbol> ( </symbol>
+                          <expressionList>
+                            <expression>
+                              <term>
+                                <identifier> x1 </identifier>
+                                  NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                              </term>
+                            </expression>
+                            <symbol> , </symbol>
+                            <expression>
+                              <term>
+                                <integerConstant> 16 </integerConstant>
+                              </term>
+                            </expression>
+                          </expressionList>
+                          <symbol> ) </symbol>
+                        </term>
+                        <symbol> = </symbol>
+                        <term>
+                          <integerConstant> 0 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                    <symbol> &amp; </symbol>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> x2 </identifier>
+                            NAME: x2, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> - </symbol>
+                        <term>
+                          <identifier> x1 </identifier>
+                            NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &gt; </symbol>
+                        <term>
+                          <integerConstant> 16 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                  <symbol> { </symbol>
+                  <statements>
+                    <whileStatement>
+                      <keyword> while </keyword>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier> x2 </identifier>
+                            NAME: x2, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> - </symbol>
+                        <term>
+                          <identifier> x1 </identifier>
+                            NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> &gt; </symbol>
+                        <term>
+                          <integerConstant> 16 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                      <symbol> { </symbol>
+                      <statements>
+                        <doStatement>
+                          <keyword> do </keyword>
+                          <identifier> Screen </identifier>
+                            NAME: Screen, TYPE: int, KIND: none, INDEX: NA
+                          <symbol> . </symbol>
+                          <identifier> fillScreenMapWord </identifier>
+                            NAME: fillScreenMapWord, TYPE: int, KIND: none, INDEX: NA
+                          <symbol> ( </symbol>
+                          <expressionList>
+                            <expression>
+                              <term>
+                                <identifier> x1 </identifier>
+                                  NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                              </term>
+                            </expression>
+                            <symbol> , </symbol>
+                            <expression>
+                              <term>
+                                <identifier> y </identifier>
+                                  NAME: y, TYPE: int, KIND: none, INDEX: NA
+                              </term>
+                            </expression>
+                          </expressionList>
+                          <symbol> ) </symbol>
+                          <symbol> ; </symbol>
+                        </doStatement>
+                        <letStatement>
+                          <keyword> let </keyword>
+                          <identifier> x1 </identifier>
+                            NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                          <symbol> = </symbol>
+                          <expression>
+                            <term>
+                              <identifier> x1 </identifier>
+                                NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                            </term>
+                            <symbol> + </symbol>
+                            <term>
+                              <integerConstant> 16 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ; </symbol>
+                        </letStatement>
+                      </statements>
+                      <symbol> } </symbol>
+                    </whileStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                  <keyword> else </keyword>
+                  <symbol> { </symbol>
+                  <statements>
+                    <doStatement>
+                      <keyword> do </keyword>
+                      <identifier> Screen </identifier>
+                        NAME: Screen, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> . </symbol>
+                      <identifier> drawPixel </identifier>
+                        NAME: drawPixel, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> ( </symbol>
+                      <expressionList>
+                        <expression>
+                          <term>
+                            <identifier> x1 </identifier>
+                              NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                        <symbol> , </symbol>
+                        <expression>
+                          <term>
+                            <identifier> y </identifier>
+                              NAME: y, TYPE: int, KIND: none, INDEX: NA
+                          </term>
+                        </expression>
+                      </expressionList>
+                      <symbol> ) </symbol>
+                      <symbol> ; </symbol>
+                    </doStatement>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier> x1 </identifier>
+                        NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <identifier> x1 </identifier>
+                            NAME: x1, TYPE: int, KIND: none, INDEX: NA
+                        </term>
+                        <symbol> + </symbol>
+                        <term>
+                          <integerConstant> 1 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                </ifStatement>
+              </statements>
+              <symbol> } </symbol>
+            </whileStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> drawVertical </identifier>
+      NAME: drawVertical, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> y1 </identifier>
+        NAME: y1, TYPE: int, KIND: argument, ARGINDEX: 0
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> y2 </identifier>
+        NAME: y2, TYPE: int, KIND: argument, ARGINDEX: 1
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> x </identifier>
+        NAME: x, TYPE: int, KIND: argument, ARGINDEX: 2
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y1 </identifier>
+                    NAME: y1, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y1 </identifier>
+                    NAME: y1, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxRows </identifier>
+                    NAME: maxRows, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y2 </identifier>
+                    NAME: y2, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y2 </identifier>
+                    NAME: y2, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxRows </identifier>
+                    NAME: maxRows, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x </identifier>
+                    NAME: x, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> | </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> x </identifier>
+                    NAME: x, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &gt; </symbol>
+                <term>
+                  <identifier> maxCols </identifier>
+                    NAME: maxCols, TYPE: int, KIND: none, INDEX: NA
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Sys </identifier>
+                NAME: Sys, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> error </identifier>
+                NAME: error, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <integerConstant> 8 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> y2 </identifier>
+                NAME: y2, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> &lt; </symbol>
+            <term>
+              <identifier> y1 </identifier>
+                NAME: y1, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Screen </identifier>
+                NAME: Screen, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> drawVertical </identifier>
+                NAME: drawVertical, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> y2 </identifier>
+                      NAME: y2, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifier> y1 </identifier>
+                      NAME: y1, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <identifier> x </identifier>
+                      NAME: x, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+          <keyword> else </keyword>
+          <symbol> { </symbol>
+          <statements>
+            <whileStatement>
+              <keyword> while </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> y1 </identifier>
+                    NAME: y1, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier> y2 </identifier>
+                        NAME: y2, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <integerConstant> 1 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <doStatement>
+                  <keyword> do </keyword>
+                  <identifier> Screen </identifier>
+                    NAME: Screen, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> . </symbol>
+                  <identifier> drawPixel </identifier>
+                    NAME: drawPixel, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> ( </symbol>
+                  <expressionList>
+                    <expression>
+                      <term>
+                        <identifier> x </identifier>
+                          NAME: x, TYPE: int, KIND: none, INDEX: NA
+                      </term>
+                    </expression>
+                    <symbol> , </symbol>
+                    <expression>
+                      <term>
+                        <identifier> y1 </identifier>
+                          NAME: y1, TYPE: int, KIND: none, INDEX: NA
+                      </term>
+                    </expression>
+                  </expressionList>
+                  <symbol> ) </symbol>
+                  <symbol> ; </symbol>
+                </doStatement>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier> y1 </identifier>
+                    NAME: y1, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <identifier> y1 </identifier>
+                        NAME: y1, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <integerConstant> 1 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+              </statements>
+              <symbol> } </symbol>
+            </whileStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> fillScreenMapWord </identifier>
+      NAME: fillScreenMapWord, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> x </identifier>
+        NAME: x, TYPE: int, KIND: argument, ARGINDEX: 0
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier> y </identifier>
+        NAME: y, TYPE: int, KIND: argument, ARGINDEX: 1
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> targetAddress </identifier>
+          NAME: targetAddress, TYPE: int, KIND: var, VARINDEX: 0
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> targetAddress </identifier>
+            NAME: targetAddress, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> screenMapStartAddress </identifier>
+                NAME: screenMapStartAddress, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> + </symbol>
+            <term>
+              <identifier> Math </identifier>
+                NAME: Math, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> multiply </identifier>
+                NAME: multiply, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> y </identifier>
+                      NAME: y, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 32 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> + </symbol>
+            <term>
+              <identifier> Math </identifier>
+                NAME: Math, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> divide </identifier>
+                NAME: divide, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> x </identifier>
+                      NAME: x, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 16 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> color </identifier>
+                NAME: color, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Memory </identifier>
+                NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> poke </identifier>
+                NAME: poke, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> targetAddress </identifier>
+                      NAME: targetAddress, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <symbol> - </symbol>
+                    <term>
+                      <integerConstant> 1 </integerConstant>
+                    </term>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+          <keyword> else </keyword>
+          <symbol> { </symbol>
+          <statements>
+            <doStatement>
+              <keyword> do </keyword>
+              <identifier> Memory </identifier>
+                NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> poke </identifier>
+                NAME: poke, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> targetAddress </identifier>
+                      NAME: targetAddress, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+                <symbol> , </symbol>
+                <expression>
+                  <term>
+                    <integerConstant> 0 </integerConstant>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+              <symbol> ; </symbol>
+            </doStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <symbol> } </symbol>
+</class>

@@ -1,0 +1,94 @@
+<class>
+  <keyword> class </keyword>
+  <identifier> Main </identifier>
+    NAME: Main, TYPE: none, KIND: none, INDEX: NA
+  <symbol> { </symbol>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> main </identifier>
+      NAME: main, TYPE: none, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <identifier> PongGame </identifier>
+          NAME: PongGame, TYPE: PongGame, KIND: var, VARINDEX: 0
+        <identifier> game </identifier>
+          NAME: game, TYPE: PongGame, KIND: var, VARINDEX: 0
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> PongGame </identifier>
+            NAME: PongGame, TYPE: PongGame, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> newInstance </identifier>
+            NAME: newInstance, TYPE: PongGame, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> game </identifier>
+            NAME: game, TYPE: PongGame, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier> PongGame </identifier>
+                NAME: PongGame, TYPE: PongGame, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> getInstance </identifier>
+                NAME: getInstance, TYPE: PongGame, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> game </identifier>
+            NAME: game, TYPE: PongGame, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> run </identifier>
+            NAME: run, TYPE: PongGame, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> game </identifier>
+            NAME: game, TYPE: PongGame, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> dispose </identifier>
+            NAME: dispose, TYPE: PongGame, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <symbol> } </symbol>
+</class>

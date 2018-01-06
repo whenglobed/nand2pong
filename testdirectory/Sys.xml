@@ -1,0 +1,367 @@
+<class>
+  <keyword> class </keyword>
+  <identifier> Sys </identifier>
+    NAME: Sys, TYPE: none, KIND: none, INDEX: NA
+  <symbol> { </symbol>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> init </identifier>
+      NAME: init, TYPE: none, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Memory </identifier>
+            NAME: Memory, TYPE: none, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> init </identifier>
+            NAME: init, TYPE: none, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Screen </identifier>
+            NAME: Screen, TYPE: none, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> init </identifier>
+            NAME: init, TYPE: none, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Keyboard </identifier>
+            NAME: Keyboard, TYPE: none, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> init </identifier>
+            NAME: init, TYPE: none, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Output </identifier>
+            NAME: Output, TYPE: none, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> init </identifier>
+            NAME: init, TYPE: none, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Math </identifier>
+            NAME: Math, TYPE: none, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> init </identifier>
+            NAME: init, TYPE: none, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Main </identifier>
+            NAME: Main, TYPE: none, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> main </identifier>
+            NAME: main, TYPE: none, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Sys </identifier>
+            NAME: Sys, TYPE: none, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> halt </identifier>
+            NAME: halt, TYPE: none, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> halt </identifier>
+      NAME: halt, TYPE: none, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <keyword> true </keyword>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> wait </identifier>
+      NAME: wait, TYPE: none, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> duration </identifier>
+        NAME: duration, TYPE: int, KIND: argument, ARGINDEX: 0
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier> i </identifier>
+          NAME: i, TYPE: int, KIND: var, VARINDEX: 0
+        <symbol> , </symbol>
+        <identifier> timer </identifier>
+          NAME: timer, TYPE: int, KIND: var, VARINDEX: 1
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> i </identifier>
+            NAME: i, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier> timer </identifier>
+            NAME: timer, TYPE: int, KIND: none, INDEX: NA
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <whileStatement>
+          <keyword> while </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier> i </identifier>
+                NAME: i, TYPE: int, KIND: none, INDEX: NA
+            </term>
+            <symbol> &lt; </symbol>
+            <term>
+              <identifier> duration </identifier>
+                NAME: duration, TYPE: int, KIND: none, INDEX: NA
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <whileStatement>
+              <keyword> while </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier> timer </identifier>
+                    NAME: timer, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <integerConstant> 325 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier> timer </identifier>
+                    NAME: timer, TYPE: int, KIND: none, INDEX: NA
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <identifier> timer </identifier>
+                        NAME: timer, TYPE: int, KIND: none, INDEX: NA
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <integerConstant> 1 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+              </statements>
+              <symbol> } </symbol>
+            </whileStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> i </identifier>
+                NAME: i, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier> i </identifier>
+                    NAME: i, TYPE: int, KIND: none, INDEX: NA
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier> timer </identifier>
+                NAME: timer, TYPE: int, KIND: none, INDEX: NA
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 0 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </whileStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier> error </identifier>
+      NAME: error, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> errorCode </identifier>
+        NAME: errorCode, TYPE: int, KIND: argument, ARGINDEX: 0
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Output </identifier>
+            NAME: Output, TYPE: int, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> printString </identifier>
+            NAME: printString, TYPE: int, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <stringConstant> ERR </stringConstant>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Output </identifier>
+            NAME: Output, TYPE: int, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> printInt </identifier>
+            NAME: printInt, TYPE: int, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <identifier> errorCode </identifier>
+                  NAME: errorCode, TYPE: int, KIND: none, INDEX: NA
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Sys </identifier>
+            NAME: Sys, TYPE: int, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> halt </identifier>
+            NAME: halt, TYPE: int, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <symbol> } </symbol>
+</class>

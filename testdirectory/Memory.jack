@@ -1,0 +1,196 @@
+// This file is part of the materials accompanying the book 
+// "The Elements of Computing Systems" by Nisan and Schocken, 
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/12/Memory.jack
+
+/**
+ * Memory operations library.
+ */ 
+class Memory {
+    
+    static int heapBase;
+    static int heapLength;
+    static int freeList;
+    static Array memory; // dummy array used for memory indexing
+
+    /** Initializes memory parameters. */
+    function void init() {
+        let heapBase = 2048;
+        let heapLength = 14336;
+        let memory = 0;
+        
+        // Initialize freeList, which is not a formal linked list structure, but
+        // memory manipulated directly to create "nodes" of free blocks for allocation.
+        // Nodes start with length data and a pointer to the next node.
+        let freeList = heapBase;
+        let memory[freeList] = heapLength; // the entire heap is initially a free block, starting at heapBase
+        let memory[freeList + 1] = null; // list is initially one giant block, so no next pointer
+        
+        return;
+    }
+
+    /** Returns the value of the main memory at this address. */
+    function int peek(int address) {
+        return memory[address];
+    }
+
+    /** Sets the value of the main memory at this address
+     *  to the given value. */
+    function void poke(int address, int value) {
+        let memory[address] = value;
+        return;
+    }
+
+    /** finds and allocates from the heap a memory block of the 
+     *  specified size and returns a reference to its base address.
+     *  Uses a first-fit search method, and returns blocks from the END
+     *  of the node (i.e. starting with the highest memory addresses).
+     *  NOTE: allocated blocks of memory need an extra word of memory to store
+     *  their length data, so we really need to find a block of (size + 1).
+     *  If allocating the requested size would leave a block smaller than 4 words, the
+     *  entire block is returned. */
+    function int alloc(int size) {
+        var int tempNode;
+        var int newLength;
+        var int blockAddress;
+        
+        if (size < 0) {
+            do Sys.error(5); // size must be positive
+        }
+        
+        let tempNode = freeList;
+        
+        while (~(tempNode = 0)) {
+            if (memory[tempNode] > size) {
+                let newLength = memory[tempNode] - (size + 1);
+                if (newLength < 4) {                    
+                    do Memory.removeNode(tempNode);
+                    let memory[tempNode + 1] = null;
+                    return tempNode;
+                }
+                else
+                {                    
+                    let blockAddress = tempNode + newLength + 1;
+                    let memory[tempNode] = newLength;                    
+                    let memory[blockAddress - 1] = size + 1; // +1 word for "hidden" length data
+                    return blockAddress;
+                }
+            }
+            let tempNode = memory[tempNode + 1];
+        }
+        
+        return null;
+    }
+
+    /** De-allocates the given object and frees its space.
+     *  Object is a memory address, so object - 1 lets us access the "invisible"
+     *  length data that we stored in alloc(). Object - 1 is the "real" start
+     *  of the segment.
+     *  This function also attempts to defrag each node after adding it back 
+     *  to freeList. */
+    function void deAlloc(int object) {
+        if (object = 0) {
+            do Output.printString("Error: cannot deallocate null object.");
+        }
+        else {
+            do Memory.appendNode(object - 1);
+            do Memory.defragSingleBlock(object - 1);
+        }
+        return;
+    }
+    
+    /* Searches the freeList for another memory block that should be
+     * contiguous with the provided node and merges them if found. The method
+     * used to check for contiguity is another node such that
+     * tempAddress + temp's length = targetAddress.
+     * NOTE: This function should only be called for nodes that are in freeList,
+     * not for currently allocated blocks. */
+    function void defragSingleBlock(int targetAddress) {
+        var int tempNode;        
+        
+        let tempNode = freeList;
+        
+        while (~(tempNode = 0)) {
+            if (tempNode + memory[tempNode] = targetAddress) {                
+                let memory[tempNode] = memory[tempNode] + memory[targetAddress]; // combine the lengths
+                do Memory.removeNode(targetAddress);
+                return;
+            }
+            let tempNode = memory[tempNode + 1];
+        }
+        
+        return;
+    }
+    
+    
+   /* Recursively attempts to defrag the entire freeList, starting at the tail end.*/
+    function void defragRecursive(int nodeAddress) {
+        if (~(memory[nodeAddress + 1] = 0)) {
+            do Memory.defragRecursive(memory[nodeAddress + 1]);
+        }
+        else {
+            do Memory.defragSingleBlock(nodeAddress);
+        }
+        
+        return;
+    }
+    
+    /* Basically a dummy function wrapper so freeList can be passed
+     * to defragRecursive() as the intial value. Attempts to defrag 
+     * multiple times, number of iterations is arbitrary. */
+    function void defragAll() {
+        var int i;
+        
+        let i = 0;
+        
+        while (i < 10) {
+            do Memory.defragRecursive(freeList);
+            let i = i + 1;
+        }
+        return;
+    }
+    
+    /* Appends the provided memory node to the end of freeList. */
+    function void appendNode(int nodeAddress) {
+        var int tempNode;
+        
+        let tempNode = freeList;
+        while (~(memory[tempNode + 1] = null)) {
+            let tempNode = memory[tempNode + 1];
+        }
+        let memory[tempNode + 1] = nodeAddress;        
+        let memory[nodeAddress + 1] = null;        
+        
+        return;
+    }
+    
+    /* Removes node from freeList entirely and updates the pointer of the preceding
+     * node. Should only be called when the entire node has been allocated, or when
+     * two nodes are being merged during defragmentation. */    
+    function void removeNode(int nodeAddress) {        
+        var int nextPointer;
+        var int tempNode;
+        
+        if (nodeAddress = freeList) {
+             // This is the error code for heap overflow, which is not really what's
+             // happening in this case. Trying to remove the head of the list means the
+             // heap has "grown up" too far and we're out of memory.
+            do Sys.error(6);
+        }
+        
+        let nextPointer = memory[nodeAddress + 1];
+        let tempNode = freeList;
+        
+        // Search the linked list for a node with a pointer to nodeAddress.
+        // When found, replace that pointer with nodeAddress's pointer.        
+        while (~(tempNode = 0)) {
+            if (memory[tempNode + 1] = nodeAddress) {
+                let memory[tempNode + 1] = nextPointer;
+                return;
+            }
+            let tempNode = memory[tempNode + 1];
+        }
+        
+        return;
+    }
+}

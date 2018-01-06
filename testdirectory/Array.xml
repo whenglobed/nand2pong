@@ -1,0 +1,88 @@
+<class>
+  <keyword> class </keyword>
+  <identifier> Array </identifier>
+    NAME: Array, TYPE: none, KIND: none, INDEX: NA
+  <symbol> { </symbol>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <identifier> Array </identifier>
+      NAME: Array, TYPE: none, KIND: none, INDEX: NA
+    <identifier> new </identifier>
+      NAME: new, TYPE: none, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier> size </identifier>
+        NAME: size, TYPE: int, KIND: argument, ARGINDEX: 0
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <identifier> Memory </identifier>
+                NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+              <symbol> . </symbol>
+              <identifier> alloc </identifier>
+                NAME: alloc, TYPE: int, KIND: none, INDEX: NA
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier> size </identifier>
+                      NAME: size, TYPE: int, KIND: none, INDEX: NA
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifier> dispose </identifier>
+      NAME: dispose, TYPE: int, KIND: none, INDEX: NA
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier> Memory </identifier>
+            NAME: Memory, TYPE: int, KIND: none, INDEX: NA
+          <symbol> . </symbol>
+          <identifier> deAlloc </identifier>
+            NAME: deAlloc, TYPE: int, KIND: none, INDEX: NA
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <keyword> this </keyword>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <symbol> } </symbol>
+</class>
